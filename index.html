@@ -1144,4 +1144,249 @@ const PageF1=({go})=>{
   const prizes=[{name:'iPhone 16 Pro',desc:'256GB 深空黑',e:'📱',tier:'SSR',c:'#0071DC'},{name:'沃尔玛礼品卡',desc:'价值 ¥500',e:'💳',tier:'SR',c:'#10B981'},{name:'蓝牙降噪耳机',desc:'品牌限定色',e:'🎧',tier:'SR',c:'#8B5CF6'},{name:'峰会限定帆布袋',desc:'设计师联名',e:'👜',tier:'R',c:'#F59E0B'}];
   const open=()=>{setPhase('shaking');setTimeout(()=>setPhase('opening'),1600);setTimeout(()=>{setPrize(prizes[Math.floor(Math.random()*prizes.length)]);setPhase('won');},2800);};
   return(<div className="h-full flex flex-col relative">
-    {phase==='won'&&confettis.map((c,i)=><div key={i} className="absolute z-[60] rounded-sm" style=
+    {phase==='won'&&confettis.map((c,i)=><div key={i} className="absolute z-[60] rounded-sm" style={{left:c.x,top:-10,width:c.size,height:c.size*1.5,background:c.color,animation:`confetti 2s ease-in ${c.delay}s both`}}/>)}
+    <div className="flex-1 overflow-auto">
+      <div className="relative pb-[24px]" style={{minHeight:200,background:'linear-gradient(170deg,#001D3D 0%,#003566 40%,#0071DC 100%)'}}><div className="absolute top-[-40px] right-[-30px] w-[200px] h-[200px] rounded-full" style={{background:'radial-gradient(circle,rgba(255,194,32,.12) 0%,transparent 60%)'}}/>
+        <div className="relative z-10 px-5 pt-4 pb-2 flex items-center"><div className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/10 cursor-pointer" onClick={()=>go(-1)}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg></div><span className="flex-1 text-center text-white text-[16px] font-bold">盲盒抽奖</span><div className="w-9"/></div>
+        <div className="relative z-10 px-5 pt-2 pb-5 s1"><div className="flex items-center gap-3 bg-white/[.08] backdrop-blur-sm rounded-2xl px-4 py-3 border border-white/[.06]"><Spark/><div><p className="text-white text-[14px] font-bold">{phase==='won'?'恭喜中奖！':'您有 1 次抽奖机会'}</p><p className="text-white/40 text-[12px] mt-0.5">{phase==='won'?'请在峰会当天领取':'集齐 8 个展位打卡解锁'}</p></div></div></div>
+        <div className="absolute left-0 right-0 bottom-0 h-[24px] bg-wm-bg" style={{borderRadius:'20px 20px 0 0'}}/>
+      </div>
+      <div className="bg-wm-bg flex flex-col items-center px-5">
+        <div className="py-8 s1">
+          {phase==='idle'&&<div className="relative cursor-pointer" onClick={open}>
+            <div className="w-[180px] h-[180px] rounded-[28px] flex flex-col items-center justify-center" style={{background:'linear-gradient(145deg,#0071DC,#004B99)',border:'3px solid rgba(255,194,32,.4)',boxShadow:'0 16px 48px rgba(0,113,220,.3)',animation:'float 3s ease-in-out infinite, glow 3s ease-in-out infinite'}}>
+              <div className="text-6xl mb-2">🎁</div><p className="text-[#FFC220] text-[15px] font-bold">点击开启</p></div>
+            <div className="absolute -top-2 -right-2" style={{animation:'float 2.5s ease-in-out .5s infinite'}}><Spark size={20} color="rgba(255,194,32,.6)"/></div>
+          </div>}
+          {phase==='shaking'&&<div className="w-[180px] h-[180px] rounded-[28px] flex flex-col items-center justify-center" style={{background:'linear-gradient(145deg,#0071DC,#004B99)',border:'3px solid rgba(255,194,32,.6)',animation:'shake .5s ease-in-out 3'}}><div className="text-6xl">🎁</div><p className="text-white/70 text-[13px] font-semibold mt-2">开启中...</p></div>}
+          {phase==='won'&&prize&&<div className="flex flex-col items-center" style={{animation:'popScale .6s cubic-bezier(.34,1.56,.64,1)'}}>
+            <div className="w-[180px] h-[180px] rounded-[28px] flex flex-col items-center justify-center gap-1" style={{background:'linear-gradient(155deg,#FFF8E1,#FFECB3)',border:'2px solid #FFC220',boxShadow:'0 12px 40px rgba(255,194,32,.25)'}}>
+              <div className="text-5xl">{prize.e}</div><p className="text-[16px] font-black text-[#E65100]">{prize.name}</p><p className="text-[11px] text-wm-muted">{prize.desc}</p><span className="text-[10px] font-bold text-white px-2.5 py-0.5 rounded-full mt-1" style={{background:prize.c}}>{prize.tier}</span></div></div>}
+        </div>
+        {phase==='idle'&&<button onClick={open} className="w-full h-[52px] rounded-2xl border-none text-[17px] font-bold cursor-pointer s2" style={{background:'linear-gradient(135deg,#FFC220,#F5A623)',color:'#5D3A00',boxShadow:'0 6px 20px rgba(255,194,32,.35)'}}>开启盲盒</button>}
+        {phase==='won'&&prize&&<button className="w-full h-[52px] rounded-2xl border-none text-[16px] font-bold text-white cursor-pointer mb-4" style={{background:'linear-gradient(135deg,#0071DC,#0065C7)',boxShadow:'0 4px 12px rgba(0,113,220,.3)'}}>查看兑换详情</button>}
+        <div className="w-full mb-8 s3"><p className="text-[15px] font-bold text-wm-title mb-3">奖品池</p><div className="grid grid-cols-2 gap-3">{prizes.map((p,i)=><div key={i} className="bg-white rounded-2xl p-3.5 text-center" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03),0 4px 12px rgba(0,0,0,.04)'}}><div className="text-3xl leading-none mb-2">{p.e}</div><p className="text-[13px] font-bold text-wm-title">{p.name}</p><p className="text-[11px] text-wm-muted mt-0.5">{p.desc}</p><span className="inline-block mt-1.5 text-[10px] font-bold px-2 py-[2px] rounded-full" style={{background:p.c+'14',color:p.c}}>{p.tier}</span></div>)}</div></div>
+      </div>
+    </div>
+    <TabBar active="F1"/>
+  </div>);
+};
+
+/* ═══ F2: PRIZE DETAIL ═══ */
+const PageF2=({go})=>(
+  <div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
+    <Hero h={140}><SubNav title="奖品详情" go={()=>go('F1')}/></Hero>
+    <div className="bg-wm-bg px-5 pb-8 mt-4">
+      <div className="bg-white rounded-2xl p-5" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03),0 4px 12px rgba(0,0,0,.04)'}}>
+        <div className="flex items-center gap-4 mb-5"><div className="w-[72px] h-[72px] rounded-2xl bg-wm-gold/10 flex items-center justify-center text-4xl">📱</div><div><p className="text-[18px] font-bold text-wm-title">iPhone 16 Pro</p><p className="text-[13px] text-wm-muted mt-0.5">256GB 深空黑</p><span className="inline-block mt-1.5 text-[10px] font-bold text-white px-2.5 py-1 rounded-full" style={{background:'#0071DC'}}>SSR</span></div></div>
+        <div className="pt-4" style={{borderTop:'1px solid #F3F4F6'}}>
+          <div className="flex items-center gap-2 mb-4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFC220" strokeWidth="1.5"/><span className="text-[13px] font-semibold text-wm-title">兑换方式</span></div>
+          <p className="text-[13px] text-wm-muted leading-relaxed">在峰会现场兑奖中心出示门票即可领取。退出时间截止至当日 18:00，逾期视为放弃。</p>
+        </div>
+        <div className="mt-4"><Btn onClick={()=>alert('预约成功！')}>预约领取</Btn></div>
+      
+    
+  </div></div></div></div>);
+
+/* ═══ G1: PROFILE ═══ */
+const PageG1=({go})=>{
+  const ms=[
+    {l:'我的报名',d:'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'},
+    {l:'签到记录',d:'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'},
+    {l:'打卡进度',d:'M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z'},
+    {l:'我的奖品',d:'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'},
+    {l:'峰会日程',d:'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'},
+    {l:'资料下载',d:'M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'},
+    {l:'关于峰会',d:'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'},
+    {l:'隐私政策',d:'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z'},
+  ];
+  const menus=[
+    {l:'我的行程',d:'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'},
+    {l:'邀约管理',d:'M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101'},
+    {l:'联系客服',d:'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z'},
+  ];
+  return(<div className="h-full flex flex-col relative">
+    <div className="flex-1 overflow-auto">
+      <div className="relative pb-[28px]" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)'}}>
+        <div className="absolute top-[-60px] right-[-40px] w-[220px] h-[220px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.25) 0%,transparent 55%)'}}/>
+        <div className="absolute top-8 right-5" style={{animation:'float 5s ease-in-out infinite',opacity:.06}}><Spark size={44} color="white"/></div>
+        <div className="relative z-10 px-5 pt-4 pb-2"><Spark size={16}/><span className="ml-2 text-white/50 text-[11px] font-bold tracking-[.15em] uppercase">2026沃尔玛全球峰会</span>
+          <div className="relative z-10 px-5 pt-3 s1"><div className="flex items-center gap-4">
+            <div className="w-[64px] h-[64px] rounded-2xl border-[2.5px] border-white/20 bg-white/10 backdrop-blur-sm flex items-center justify-center" style={{boxShadow:'0 6px 20px rgba(0,0,0,.2)'}}><span className="text-white text-[24px] font-bold">张</span></div>
+            <div><p className="text-white text-[20px] font-bold tracking-tight">张三</p><p className="text-white/40 text-[13px] mt-0.5">沃尔玛官方旗舰店</p><div className="flex items-center gap-1.5 mt-1.5"><span className="bg-white/12 text-white/80 text-[10px] font-bold px-2 py-[2px] rounded-full border border-white/8">卖家</span><span className="bg-[#FFC220]/18 text-[#FFC220] text-[10px] font-bold px-2 py-[2px] rounded-full border border-[#FFC220]/20">VIP</span></div></div></div>
+            <div className="flex gap-2 mt-4 s2">{[{n:'12',l:'邀约人数'},{n:'3/8',l:'打卡进度'}].map((s,i)=><div key={i} className="flex-1 bg-white/[.1] backdrop-blur-sm border border-white/[.08] rounded-xl text-center py-2.5"><p className="text-white text-[20px] font-bold">{s.n}</p><p className="text-white/35 text-[10px] mt-0.5">{s.l}</p></div>)}</div>
+          </div>
+        </div>
+        <div className="absolute left-0 right-0 bottom-0 h-[28px] bg-wm-bg" style={{borderRadius:'22px 22px 0 0'}}/>
+      </div>
+      <div className="bg-wm-bg px-4 pt-4">
+        <div onClick={()=>go('A7')} className="bg-white rounded-xl px-4 py-3 flex items-center gap-3 cursor-pointer" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+          <div className="w-1.5 h-10 rounded-full bg-gradient-to-b from-wm-blue to-wm-dark"/><div className="flex-1"><p className="text-[14px] font-bold text-wm-title">电子票券</p><p className="text-[12px] text-wm-muted mt-0.5">主会场通行证 · 有效</p></div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+        <div className="px-4 mt-5"><div className="grid grid-cols-4 gap-x-3 gap-y-4">{ms.map((a,i)=><div key={i} className="flex flex-col items-center gap-1.5 cursor-pointer group"><div className={`w-11 h-11 rounded-xl bg-gradient-to-br from-[#0071DC] to-[#004B99] flex items-center justify-center text-white group-hover:scale-110 transition-transform`} style={{boxShadow:'0 3px 10px rgba(0,0,0,.1)'}}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={a.d}/></svg></div><span className="text-[11px] font-semibold text-wm-body">{a.l}</span></div>)}</div></div>
+        <div className="px-4 mt-5"><div className="bg-white rounded-xl overflow-hidden" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>{menus.map((m,i)=>[
+          <div key={i} className="mrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0071DC" strokeWidth="1.5"><path d={m.d}/></svg><span className="flex-1 text-[14px] font-semibold text-wm-title">{m.l}</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        ])}</div></div>
+        <button className="w-full h-[48px] mt-5 rounded-xl bg-wm-live/8 text-wm-live text-[15px] font-semibold border-none cursor-pointer hover:bg-wm-live/12 transition-colors">退出登录</button>
+        <div className="h-[80px]"/></div>
+    </div>
+    <TabBar active="G1"/></div>);
+};
+
+/* ═══ G2: MY REGISTRATION ═══ */
+const PageG2=({go})=>(
+  <div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
+    <Hero h={140}><SubNav title="我的报名" go={()=>go('G1')}/></Hero>
+    <div className="bg-wm-bg px-5 pb-8">
+      <div className="bg-white rounded-2xl p-5 mt-4 s1" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03),0 4px 12px rgba(0,0,0,.04)'}}>
+        <div className="flex items-center gap-2 mb-4"><div className="w-10 h-10 rounded-xl bg-wm-ok/10 flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div className="flex-1"><p className="text-[15px] font-bold text-wm-title">报名已确认</p><p className="text-[13px] text-wm-muted mt-0.5">沃尔玛全球峰会 · 2026</p></div></div>
+        {[{l:'身份',v:'卖家'},{l:'姓名',v:'张三'},{l:'票券编号',v:'WC2026-00128'},{l:'状态',v:'已确认 · 有效'},{l:'有效期',v:'2026-09-16'}].map((r,i)=><div key={i} className="flex items-center justify-between py-2.5" style={i<4?{borderBottom:'1px solid #F5F5F7'}:{}}><span className="text-[13px] text-wm-muted">{r.l}</span><span className={`text-[13px] font-semibold ${r.l==='状态'?'text-wm-ok':''}`}>{r.v}</span></div>)}
+      
+    
+  </div></div></div></div>);
+
+/* ═══ G3: MY PRIZES ═══ */
+const PageG3=({go})=>(
+  <div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
+    <Hero h={140}><SubNav title="我的奖品" go={()=>go('G1')}/></Hero>
+    <div className="bg-wm-bg px-5 pb-8">
+      <div className="bg-white rounded-2xl p-4 mt-4 flex items-center gap-4 s1" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03),0 4px 12px rgba(0,0,0,.04)'}}>
+        <div className="w-[64px] h-[64px] rounded-xl bg-wm-ok/10 flex items-center justify-center text-3xl">💳</div>
+        <div className="flex-1"><p className="text-[15px] font-bold text-wm-title">沃尔玛礼品卡</p><p className="text-[13px] text-wm-muted mt-0.5">价值 ¥500</p></div>
+        <span className="text-[11px] font-bold text-wm-ok bg-wm-ok/8 px-2.5 py-1 rounded-full">可使用</span>
+      
+      <Empty text="暂无其他奖品"/>
+    
+  </div></div></div></div>);
+
+/* ═══ H1: LIVE LIST ═══ */
+const PageH1=({go})=>{
+  const lives=[
+    {title:'主会场开幕式',vn:'主会场',time:'09:00-12:00',v:'0.8万在线',live:true},
+    {title:'卖家增长论坛',vn:'主会场',time:'11:00-12:30',live:false},
+    {title:'广告智能升级',vn:'分会场A',time:'10:00-11:30',live:false},
+    {title:'品牌增长新范式',vn:'分会场A',time:'13:30-15:00',live:false},
+    {title:'广告主私享会',vn:'分会场B',time:'13:30-15:00',live:false},
+    {title:'互动抽奖与闭幕式',vn:'主会场',time:'16:30-17:30',live:false},
+  ];
+  return(
+    <div className="h-full flex flex-col relative">
+      <div className="relative shrink-0 pb-[24px]" style={{minHeight:100,background:'linear-gradient(170deg,#001D3D 0%,#003566 40%,#0071DC 100%)'}}>
+        <div className="relative z-10 px-5 pt-4 pb-2 flex items-center">
+          <span className="flex-1 text-white text-[18px] font-bold">直播</span>
+        </div>
+        <div className="absolute left-0 right-0 bottom-0 h-[24px] bg-wm-bg" style={{borderRadius:'20px 20px 0 0'}}/>
+      </div>
+      <div className="flex-1 overflow-auto bg-wm-bg px-4 pb-[80px]">
+        {lives.map((l,i)=>(
+          <div key={i} className="bg-white rounded-xl px-4 py-3.5 flex gap-3.5 cursor-pointer mt-3" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}} onClick={()=>go('H2')}>
+            <div className="w-[80px] h-[50px] rounded-xl overflow-hidden relative shrink-0" style={{background:l.live?'linear-gradient(135deg,#001D3D,#0071DC)':'linear-gradient(135deg,#374151,#1F2937)'}}>
+              <div className="absolute inset-0 flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="white" opacity=".5"><path d="M8 5v14l11-7z"/></svg></div>
+              {l.live&&<div className="absolute top-1.5 left-1.5 flex items-center gap-1 bg-wm-live/90 text-white text-[8px] font-bold px-1.5 py-[1px] rounded"><div className="w-1 h-1 bg-white rounded-full"/>LIVE</div>}
+            </div>
+            <div className="flex-1 min-w-0 py-0.5">
+              <p className="text-[14px] font-bold text-wm-title leading-snug">{l.title}</p>
+              <p className="text-[12px] text-wm-muted mt-0.5">{l.vn} · {l.time}</p>
+              {l.live&&<div className="flex items-center gap-1 mt-1"><div className="w-1.5 h-1.5 rounded-full bg-wm-live"/><span className="text-[12px] text-wm-live font-semibold">{l.v}</span></div>}
+            </div>
+          </div>
+        ))}
+      </div>
+      <TabBar active="H1"/>
+    </div>
+  );
+};
+
+/* ═══ H2: LIVE ROOM ═══ */
+const PageH2=({go})=>(
+  <div className="h-full flex flex-col relative">
+    <div className="shrink-0 relative" style={{minHeight:220,background:'linear-gradient(170deg,#001D3D 0%,#003566 40%,#0071DC 100%)'}}>
+      <div className="relative z-10 px-5 pt-4 pb-2 flex items-center">
+        <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/10 cursor-pointer" onClick={()=>go('H1')}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+        <span className="flex-1 text-center text-white text-[16px] font-bold">主会场开幕式</span>
+        <div className="w-9"/>
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center"><svg width="56" height="56" viewBox="0 0 24 24" fill="white" opacity=".2"><path d="M8 5v14l11-7z"/></svg></div>
+      <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-wm-live/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg"><div className="w-1.5 h-1.5 bg-white rounded-full"/>LIVE</div>
+      <div className="absolute bottom-4 left-5 z-10"><p className="text-white text-[26px] font-black">1.2万人在线</p></div>
+    </div>
+    <div className="flex-1 overflow-auto bg-wm-bg">
+      <div className="bg-white mx-4 rounded-xl px-4 py-3 flex items-center gap-3 mt-3" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#0071DC] to-[#004B99] flex items-center justify-center text-white text-[12px] font-bold">张</div>
+        <div className="flex-1"><p className="text-[13px] font-semibold text-wm-title">CEO 主题演讲</p><p className="text-[11px] text-wm-muted">09:00 正在进行中</p></div>
+      </div>
+    </div>
+  </div>
+);
+
+/* ═══ I1: MATERIALS ═══ */
+const PageI1=({go})=>(
+  <div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
+    <Hero h={140}><SubNav title="资料下载" go={()=>go('G1')}/>
+      <div className="relative z-10 px-5 pt-2 pb-0"><h1 className="text-white text-[26px] font-black tracking-tight">资料下载</h1><p className="text-white/35 text-[13px] mt-1">峰会演讲 PPT 及报告</p></div>
+    </Hero>
+    <div className="bg-wm-bg px-4 pb-8">
+      {[{n:'2026 全球战略发布 PPT',s:'演讲资料',d:'5min前下载了128次',c:'#0071DC'},{n:'广告智能升级白皮书',s:'研究报告',d:'2小时前下载了356次',c:'#8B5CF6'},{n:'卖家增长方法论',s:'演讲资料',d:'5小时前下载了92次',c:'#10B981'},{n:'TPO (Trade Partner Optimization)',s:'品牌资料',d:'1天前下载了210次',c:'#F59E0B'}].map((f,i,r)=><div key={i} className="bg-white rounded-xl px-4 py-3.5 flex items-center gap-3 mt-3 first:mt-4 hover:bg-[#FAFBFC] transition-colors" style={i<r.length-1?{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}:{}} onClick={()=>go('I2')}>
+        <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{background:f.c+'14'}}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={f.c} strokeWidth="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div className="flex-1 min-w-0"><p className="text-[14px] font-semibold text-wm-title truncate">{f.n}</p><p className="text-[12px] text-wm-muted mt-0.5">{f.s}</p></div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg></div>)}
+    
+  </div></div></div>);
+
+/* ═══ I2: MATERIAL DETAIL ═══ */
+const PageI2=({go})=>(
+  <div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
+    <Hero h={140}><SubNav title="资料详情" go={()=>go('I1')}/></Hero>
+    <div className="bg-wm-bg px-5 pb-8 mt-4">
+      <div className="bg-white rounded-2xl p-5" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03),0 4px 12px rgba(0,0,0,.04)'}}>
+        <div className="w-14 h-14 rounded-2xl bg-wm-blue/10 flex items-center justify-center mb-4"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0071DC" strokeWidth="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <h2 className="text-[20px] font-bold text-wm-title">2026 全球战略发布 PPT</h2>
+        <p className="text-[13px] text-wm-muted mt-1">演讲资料 · PDF · 18.5 MB</p>
+        <div className="mt-5 pt-4" style={{borderTop:'1px solid #F3F4F6'}}>
+          <div className="flex items-center justify-between mb-3"><span className="text-[13px] font-semibold text-wm-title">文档简介</span><span className="text-[12px] text-wm-muted">更新于 1小时前</span></div>
+          <p className="text-[13px] text-wm-body leading-relaxed">沃尔玛中国 2026 全球战略发布演讲材料，包含市场趋势分析、增长策略路线图及合作伙伴计划。</p>
+        </div>
+        <div className="mt-4 flex gap-3"><Btn onClick={()=>alert('已开始下载')}><span className="flex items-center justify-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>下载</span></Btn><Btn outline>收藏</Btn></div>
+      </div>
+    </div>
+  </div></div>);
+
+/* ═══ APP ROUTER ═══ */
+const pages={A1:PageA1,A2:PageA2,A3:PageA3,A4:PageA4,A5:PageA5,A6:PageA6,A7:PageA7,B1:PageB1,B2:PageB2,B3:PageB3,B4:PageB4,C1:PageC1,C2:PageC2,C3:PageC3,D1:PageD1,D2:PageD2,D3:PageD3,D4:PageD4,E1:PageE1,E2:PageE2,F1:PageF1,F2:PageF2,G1:PageG1,G2:PageG2,G3:PageG3,H1:PageH1,H2:PageH2,I1:PageI1,I2:PageI2};
+const tabMap={B1:'B1',F1:'F1',H1:'H1',B3:'B3',G1:'G1'};
+
+function App(){
+  const[scr,setScr]=useState('A1');
+  const[hist,setHist]=useState(['A1']);
+
+  const go=(id)=>{
+    if(id===-1){
+      if(hist.length>1){const nh=[...hist];nh.pop();setHist(nh);setScr(nh[nh.length-1]);}
+      return;
+    }
+    // TabBar navigation
+    if(tabMap[id]){setHist([id]);setScr(id);return;}
+    setHist(h=>[...h,id]);setScr(id);
+  };
+
+  const Page=pages[scr]||PageA1;
+
+  // Wrap TabBar clicks
+  const goWithTab=(id)=>go(id);
+
+  return(
+    <div className="h-full bg-wm-bg relative" onClick={(e)=>{
+      // Handle TabBar clicks via data attributes
+      const btn=e.target.closest('[data-tab]');
+      if(btn)go(btn.dataset.tab);
+    }}>
+      <Page go={go}/>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
