@@ -2,8 +2,9 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>沃尔玛全球峰会</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#001D3D">
+<title>2026沃尔玛全球峰会</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -11,7 +12,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script>tailwind.config={theme:{extend:{colors:{wm:{blue:'#0071DC',dark:'#004B99',deep:'#001D3D',bg:'#F5F6F8',card:'#FFF',title:'#111827',body:'#374151',muted:'#9CA3AF',gold:'#FFC220',ok:'#10B981',vip:'#8B5CF6',warn:'#F59E0B',live:'#EF4444'}},fontFamily:{sans:['Inter','PingFang SC','system-ui']}}}}</script>
 <style>
-*{-webkit-font-smoothing:antialiased;box-sizing:border-box}body{font-family:'Inter','PingFang SC',system-ui;margin:0}::-webkit-scrollbar{display:none}
+*{-webkit-font-smoothing:antialiased;box-sizing:border-box}body{font-family:'Inter','PingFang SC',system-ui;margin:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent}::-webkit-scrollbar{display:none}
+button:active{transform:scale(.97)!important;transition:transform .1s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(2deg)}}
 @keyframes dotPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
@@ -48,22 +50,22 @@ const Hero=({children,h=200})=>{
 };
 const SubNav=({title,go})=>(
   <div className="relative z-10 px-4 pt-4 pb-2 flex items-center">
-    <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/10 cursor-pointer" onClick={()=>go(-1)}>
+    <div className="w-9 h-9 flex items-center justify-center rounded-[14px] bg-white/10 cursor-pointer" onClick={()=>go(-1)}>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
     </div>
     <span className="flex-1 text-center text-white text-[16px] font-bold">{title}</span>
     <div className="w-9"/>
   </div>
 );
-const Card=({children,className=''})=><div className={`bg-white rounded-xl ${className}`} style={{boxShadow:'0 1px 3px rgba(0,0,0,.03),0 4px 12px rgba(0,0,0,.04)'}}>{children}</div>;
+const Card=({children,className=''})=><div className={`bg-white rounded-[14px] ${className}`} style={{boxShadow:'0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04)'}}>{children}</div>;
 const Inp=({label,ph})=>(
   <div className="mb-4">
     <label className="text-[13px] font-semibold text-wm-title block mb-1.5">{label}</label>
-    <input className="w-full h-[44px] px-3.5 rounded-xl border border-gray-200 text-[14px] text-wm-title outline-none focus:border-wm-blue focus:ring-2 focus:ring-wm-blue/10 transition-all bg-white" placeholder={ph}/>
+    <input className="w-full h-[48px] px-4 rounded-[10px] border border-gray-200 text-[15px] text-wm-title outline-none transition-all bg-[#F9FAFB]" style={{boxShadow:'none'}} onFocus={e=>{e.target.style.borderColor='#0071DC';e.target.style.boxShadow='0 0 0 3px rgba(0,113,220,.15)'}} onBlur={e=>{e.target.style.borderColor='#E5E7EB';e.target.style.boxShadow='none'}} placeholder={ph}/>
   </div>
 );
 const Btn=({children,gold,outline,onClick})=>(
-  <button onClick={onClick} className="w-full h-[48px] rounded-xl border-none text-[16px] font-bold cursor-pointer transition-all" style={gold?{background:'linear-gradient(135deg,#FFC220,#F5A623)',color:'#5D3A00',boxShadow:'0 4px 16px rgba(255,194,32,.3)'}:outline?{background:'transparent',border:'1.5px solid #E5E7EB',color:'#374151'}:{background:'linear-gradient(135deg,#0071DC,#0065C7)',color:'#fff',boxShadow:'0 4px 12px rgba(0,113,220,.25)'}}>{children}</button>
+  <button onClick={onClick} className="w-full h-[48px] rounded-[10px] border-none text-[16px] font-semibold cursor-pointer transition-all active:scale-[.97]" style={gold?{background:'linear-gradient(135deg,#FFC220,#F5A623)',color:'#5D3A00',boxShadow:'0 4px 16px rgba(255,194,32,.3)'}:outline?{background:'transparent',border:'1.5px solid #E5E7EB',color:'#374151'}:{background:'linear-gradient(135deg,#0071DC,#0065C7)',color:'#fff',boxShadow:'0 4px 12px rgba(0,113,220,.25)'}}>{children}</button>
 );
 const Empty=({text})=><div className="flex flex-col items-center py-16 text-wm-muted"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" opacity=".3"><rect x="3" y="4" width="18" height="18" rx="2"/></svg><p className="text-[14px] mt-3">{text}</p></div>;
 
@@ -106,11 +108,11 @@ const PageA1=({go})=>{
                   const target = r.id === 'seller' ? 'A2' : (r.id === 'employee' ? 'A4' : 'A3');
                   setTimeout(() => go(target), 200); 
                 }}
-                className={`bg-white rounded-2xl p-4 cursor-pointer transition-all ${role === r.id ? 'ring-2 ring-wm-blue' : ''}`}
+                className={`bg-white rounded-[14px] p-4 cursor-pointer transition-all ${role === r.id ? 'ring-2 ring-wm-blue' : ''}`}
                 style={{boxShadow: '0 1px 3px rgba(0,0,0,.03)'}}
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style={{background: r.color + '14'}}>
+                  <div className="w-12 h-12 rounded-[14px] flex items-center justify-center text-2xl" style={{background: r.color + '14'}}>
                     {r.icon}
                   </div>
                   <div className="flex-1">
@@ -142,7 +144,7 @@ const PageA7=({go})=>{
         <Hero h={180}><SubNav title="电子票券" go={()=>go('G1')}/></Hero>
         <div className="bg-wm-bg px-5 pb-8">
           {/* Ticket Card */}
-          <div className="bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-2xl p-5 mt-4" style={{boxShadow:'0 8px 32px rgba(0,113,220,.25)'}}>
+          <div className="bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-[14px] p-5 mt-4" style={{boxShadow:'0 8px 32px rgba(0,113,220,.25)'}}>
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Spark size={20} color="#FFC220"/>
@@ -158,7 +160,7 @@ const PageA7=({go})=>{
               <span>⏰ 09:00-18:00</span>
             </div>
             {/* QR Code */}
-            <div className="bg-white rounded-xl p-4">
+            <div className="bg-white rounded-[14px] p-4">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[12px] text-wm-muted">券码</span>
                 <span className="text-[14px] font-mono font-bold text-wm-title cursor-pointer" onClick={()=>setShowCode(!showCode)}>
@@ -178,7 +180,7 @@ const PageA7=({go})=>{
           </div>
           
           {/* Ticket Info */}
-          <div className="bg-white rounded-2xl p-5 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+          <div className="bg-white rounded-[14px] p-5 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
             <p className="text-[15px] font-bold text-wm-title mb-4">票券信息</p>
             {[{l:'票券编号',v:'WC2026-00128'},{l:'参会身份',v:'卖家 · VIP'},{l:'购票时间',v:'2026-08-15'},{l:'票券状态',v:'已确认 · 有效',highlight:true}].map((r,i,x)=>[
               <div key={i} className="flex items-center justify-between py-3" style={i<x.length-1?{borderBottom:'1px solid #F5F5F7'}:{}}>
@@ -189,14 +191,14 @@ const PageA7=({go})=>{
           </div>
           
           {/* Tips */}
-          <div className="bg-white/60 rounded-xl p-4 mt-4">
+          <div className="bg-white/60 rounded-[14px] p-4 mt-4">
             <p className="text-[12px] text-wm-muted leading-relaxed">
               <span className="text-wm-blue font-semibold">💡 温馨提示：</span>
               请妥善保管电子票券，峰会当天凭二维码扫码入场。如需转让，请在"我的-票券转让"中操作。
             </p>
           </div>
           
-          <button className="w-full h-[48px] mt-5 rounded-xl bg-wm-live/8 text-wm-live text-[15px] font-semibold border-none cursor-pointer hover:bg-wm-live/12 transition-colors">
+          <button className="w-full h-[48px] mt-5 rounded-[14px] bg-wm-live/8 text-wm-live text-[15px] font-semibold border-none cursor-pointer hover:bg-wm-live/12 transition-colors">
             保存到相册
           </button>
         </div>
@@ -211,7 +213,7 @@ const PageA2=({go})=>(<div className="h-full flex flex-col"><div className="flex
     <div className="absolute top-[-60px] right-[-40px] w-[220px] h-[220px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.22) 0%,transparent 55%)'}}></div>
     <div className="absolute top-8 right-5" style={{animation:'float 5s ease-in-out infinite',opacity:.07}}><Spark size={44} color="white"/></div>
     <div className="relative z-10 px-4 pt-4 pb-2 flex items-center">
-      <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/10 cursor-pointer" onClick={()=>go('A1')}>
+      <div className="w-9 h-9 flex items-center justify-center rounded-[14px] bg-white/10 cursor-pointer" onClick={()=>go('A1')}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
       </div>
       <span className="flex-1 text-center text-white text-[16px] font-bold">卖家身份验证</span>
@@ -243,7 +245,7 @@ const PageA3=({go})=>{
           <div className="absolute top-[-60px] right-[-40px] w-[220px] h-[220px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.22) 0%,transparent 55%)'}}></div>
           <div className="absolute top-8 right-5" style={{animation:'float 5s ease-in-out infinite',opacity:.07}}><Spark size={44} color="white"/></div>
           <div className="relative z-10 px-4 pt-4 pb-2 flex items-center">
-            <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/10 cursor-pointer" onClick={()=>go('A1')}>
+            <div className="w-9 h-9 flex items-center justify-center rounded-[14px] bg-white/10 cursor-pointer" onClick={()=>go('A1')}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
             </div>
             <span className="flex-1 text-center text-white text-[16px] font-bold">白名单验证</span>
@@ -254,7 +256,7 @@ const PageA3=({go})=>{
         </div>
         <div className="bg-wm-bg px-5 pb-8" style={{marginTop:0}}>
           <Card className="p-5 s1">
-            <div className="bg-wm-blue/5 rounded-xl p-4 mb-4">
+            <div className="bg-wm-blue/5 rounded-[14px] p-4 mb-4">
               <p className="text-[13px] text-wm-blue font-semibold mb-1">✓ 白名单准入通道</p>
               <p className="text-[12px] text-wm-muted">服务商及广告主通过预设白名单快速验证，无需人工审核</p>
             </div>
@@ -268,7 +270,7 @@ const PageA3=({go})=>{
               </Btn>
             </div>
             {result?.success && (
-              <div className="mt-4 bg-wm-ok/10 rounded-xl p-3 flex items-center gap-2">
+              <div className="mt-4 bg-wm-ok/10 rounded-[14px] p-3 flex items-center gap-2">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                 <span className="text-[13px] text-wm-ok">白名单验证通过：{result.company}</span>
               </div>
@@ -289,7 +291,7 @@ const PageA4=({go})=>(<div className="h-full flex flex-col"><div className="flex
     <div className="absolute top-[-60px] right-[-40px] w-[220px] h-[220px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.22) 0%,transparent 55%)'}}></div>
     <div className="absolute top-8 right-5" style={{animation:'float 5s ease-in-out infinite',opacity:.07}}><Spark size={44} color="white"/></div>
     <div className="relative z-10 px-4 pt-4 pb-2 flex items-center">
-      <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/10 cursor-pointer" onClick={()=>go('A1')}>
+      <div className="w-9 h-9 flex items-center justify-center rounded-[14px] bg-white/10 cursor-pointer" onClick={()=>go('A1')}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
       </div>
       <span className="flex-1 text-center text-white text-[16px] font-bold">员工验证</span>
@@ -309,7 +311,7 @@ const PageA5=({go})=>(<div className="h-full flex flex-col"><div className="flex
     <div className="absolute top-[-60px] right-[-40px] w-[220px] h-[220px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.22) 0%,transparent 55%)'}}></div>
     <div className="absolute top-8 right-5" style={{animation:'float 5s ease-in-out infinite',opacity:.07}}><Spark size={44} color="white"/></div>
     <div className="relative z-10 px-4 pt-4 pb-2 flex items-center">
-      <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/10 cursor-pointer" onClick={()=>go(-1)}>
+      <div className="w-9 h-9 flex items-center justify-center rounded-[14px] bg-white/10 cursor-pointer" onClick={()=>go(-1)}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
       </div>
       <span className="flex-1 text-center text-white text-[16px] font-bold">峰会报名</span>
@@ -341,7 +343,7 @@ const PageA6=({go})=>(<div className="h-full flex flex-col"><div className="flex
     <Card className="p-5 s3">
       {[{l:'姓名',v:'张三'},{l:'身份',v:'卖家'},{l:'票券编号',v:'WC2026-00128'}].map((r,i)=>(<div key={i} className="flex items-center justify-between py-2.5" style={i<2?{borderBottom:'1px solid #F5F5F7'}:{}}><span className="text-[13px] text-wm-muted">{r.l}</span><span className="text-[13px] font-semibold text-wm-title">{r.v}</span></div>))}
     </Card>
-    <div className="mt-4 flex gap-3 s4"><div className="flex-1"><Btn onClick={()=>go('B1')}>进入首页</Btn></div><div className="flex-1"><Btn outline onClick={()=>go('D4')}>邀请好友</Btn></div></div>
+    <div className="mt-4 flex gap-4 s4"><div className="flex-1"><Btn onClick={()=>go('B1')}>进入首页</Btn></div><div className="flex-1"><Btn outline onClick={()=>go('D4')}>邀请好友</Btn></div></div>
   </div>
 </div></div>);
 
@@ -372,7 +374,7 @@ const PageB1=({go})=>{
           <div className="absolute top-8 right-6" style={{animation:'float 5s ease-in-out infinite',opacity:.06}}><Spark size={56} color="white"/></div>
           <div className="relative z-10 px-5 pt-4">
             <div className="flex items-center pb-2"><Spark size={18}/><span className="ml-2 text-white/50 text-[11px] font-bold tracking-[.18em] uppercase">2026沃尔玛全球峰会</span><div className="flex-1"/>
-              <div className="relative w-9 h-9 flex items-center justify-center rounded-xl bg-white/10"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.65)" strokeWidth="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+              <div className="relative w-9 h-9 flex items-center justify-center rounded-[14px] bg-white/10"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.65)" strokeWidth="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
                 <div className="absolute top-1.5 right-1.5 w-2 h-2 bg-wm-live rounded-full" style={{animation:'dotPulse 2s infinite'}}/></div></div>
             <h1 className="text-white text-[32px] font-black leading-[1.05] tracking-tight mt-3">2026<br/>沃尔玛全球<br/>峰会</h1>
             <div className="flex items-center gap-2.5 mt-3 mb-4">
@@ -382,7 +384,7 @@ const PageB1=({go})=>{
                 <span className="text-[#FFC220] text-[12px] font-bold">进行中</span></div>
             </div>
             <div className="flex gap-2 pb-3 s1">
-              {acts.map((a,i)=><div key={i} onClick={()=>go(a.to)} className="flex-1 flex flex-col items-center gap-1.5 py-3 rounded-2xl bg-white/[.1] backdrop-blur-sm border border-white/[.06] cursor-pointer hover:bg-white/[.15] transition-colors">
+              {acts.map((a,i)=><div key={i} onClick={()=>go(a.to)} className="flex-1 flex flex-col items-center gap-1.5 py-3 rounded-[14px] bg-white/[.1] backdrop-blur-sm border border-white/[.06] cursor-pointer hover:bg-white/[.15] transition-colors">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" strokeWidth="1.5" strokeLinecap="round"><path d={a.d}/></svg>
                 <span className="text-white/60 text-[11px] font-medium">{a.l}</span></div>)}
             </div>
@@ -392,8 +394,8 @@ const PageB1=({go})=>{
 
         {/* LIVE */}
         <div className="bg-wm-bg px-4 pb-4">
-          <div className="bg-white rounded-2xl px-4 py-3 flex gap-3.5 cursor-pointer s2" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
-            <div className="w-[88px] h-[56px] rounded-xl overflow-hidden relative shrink-0" style={{background:'linear-gradient(135deg,#001D3D,#0071DC)'}}>
+          <div className="bg-white rounded-[14px] px-4 py-3 flex gap-4 cursor-pointer s2" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+            <div className="w-[88px] h-[56px] rounded-[14px] overflow-hidden relative shrink-0" style={{background:'linear-gradient(135deg,#001D3D,#0071DC)'}}>
               <div className="absolute inset-0 flex items-center justify-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="white" opacity=".5"><path d="M8 5v14l11-7z"/></svg></div>
               <div className="absolute top-1.5 left-1.5 flex items-center gap-1 bg-wm-live/90 text-white text-[9px] font-bold px-1.5 py-[2px] rounded"><div className="w-1 h-1 bg-white rounded-full" style={{animation:'dotPulse 1.5s infinite'}}/></div>
             </div>
@@ -407,7 +409,7 @@ const PageB1=({go})=>{
           <div className="flex items-center justify-between px-4 mb-3"><p className="text-[17px] font-bold text-wm-title">今日议程</p><span className="text-[13px] text-wm-blue font-semibold cursor-pointer" onClick={()=>go('B3')}>全部日程</span></div>
           <Card className="overflow-hidden">
             {agenda.map((a,i,x)=>(
-              <div key={i} className="flex items-start gap-3 px-4 py-3.5 cursor-pointer hover:bg-[#FAFBFC] transition-colors" style={i<x.length-1?{borderBottom:'1px solid #F3F4F6'}:{}} onClick={()=>go('B4')}>
+              <div key={i} className="flex items-start gap-4 px-4 py-3.5 cursor-pointer hover:bg-[#FAFBFC] transition-colors" style={i<x.length-1?{borderBottom:'1px solid #F3F4F6'}:{}} onClick={()=>go('B4')}>
                 <div className="w-[44px] shrink-0 pt-0.5"><span className={`text-[13px] font-bold ${a.now?'text-wm-blue':'text-wm-title'}`}>{a.time}</span></div>
                 <div className="flex flex-col items-center pt-1.5 shrink-0"><div className={`w-2 h-2 rounded-full ${a.now?'bg-wm-blue':'bg-gray-200'}`} style={a.now?{boxShadow:'0 0 0 3px rgba(0,113,220,.12)'}:{}}/>{i<x.length-1&&<div className="w-px h-7 bg-gray-100 mt-1"/>}</div>
                 <div className="flex-1 min-w-0">
@@ -457,7 +459,7 @@ const PageB2=({go})=>(
       </div>
       <div className="relative z-10 px-5 s2">
         <div className="flex gap-2">
-          {['9.16 周一','9.17 周二'].map((d,i)=><div key={d} className={`flex-1 text-center py-2 rounded-xl text-[13px] font-semibold ${i===0?'bg-white text-wm-blue':'bg-white/10 text-white/60'}`}>{d}</div>)}
+          {['9.16 周一','9.17 周二'].map((d,i)=><div key={d} className={`flex-1 text-center py-2 rounded-[14px] text-[13px] font-semibold ${i===0?'bg-white text-wm-blue':'bg-white/10 text-white/60'}`}>{d}</div>)}
         </div>
       </div>
     </Hero>
@@ -471,7 +473,7 @@ const PageB2=({go})=>(
         {t:'参会规模',c:['#10B981','#059669'],
          d:'预计 5000+ 参会者、100+ 演讲嘉宾、50+ 展位、全天候直播覆盖。'},
       ].map((s,i)=>
-        <div key={i} className={`bg-white rounded-2xl p-5 mt-3 s3`} style={{boxShadow:'0 1px 3px rgba(0,0,0,.03),0 4px 12px rgba(0,0,0,.04)'}}>
+        <div key={i} className={`bg-white rounded-[14px] p-5 mt-3 s3`} style={{boxShadow:'0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04)'}}>
           <span className={`text-[13px] font-bold text-white px-3 py-1 rounded-full inline-block mb-3`} style={{background:`linear-gradient(135deg,${s.c[0]},${s.c[1]})`}}>{s.t}</span>
           <p className="text-[14px] text-wm-body leading-relaxed">{s.d}</p>
         </div>)}
@@ -514,7 +516,7 @@ const PageB3=({go})=>{
       <div className="relative z-10 px-5 pt-2 pb-2"><h1 className="text-white text-[28px] font-black tracking-tight">峰会日程</h1><p className="text-white/35 text-[13px] mt-1">8 场议题 · 4 个会场 · 全天日程</p></div>
       {/* Phase Selector */}
       <div className="relative z-10 px-5 pb-4">
-        <div className="flex bg-white/10 rounded-xl overflow-hidden backdrop-blur-sm">
+        <div className="flex bg-white/10 rounded-[14px] overflow-hidden backdrop-blur-sm">
           {phases.map((p,i)=>(
             <div key={i} onClick={()=>setPhase(i)} className={`flex-1 py-3 px-2 text-center cursor-pointer transition-all ${i===phase?'bg-white/20':''}`}>
               <p className={`text-[14px] font-bold ${i===phase?'text-white':'text-white/50'}`}>{p.name}</p>
@@ -526,16 +528,16 @@ const PageB3=({go})=>{
       </div>
     </Hero>
     <div className="bg-wm-bg">
-      <div className="flex bg-white mx-4 rounded-xl overflow-hidden s1" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>{vs.map((x,i)=><div key={i} onClick={()=>setV(i)} className={`flex-1 text-center py-2.5 text-[12px] font-medium cursor-pointer ${i===v?'text-wm-blue font-bold bg-wm-blue/5':'text-wm-muted'}`}>{i===0?x:x.replace('分会场','')}</div>)}</div>
+      <div className="flex bg-white mx-4 rounded-[14px] overflow-hidden s1" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>{vs.map((x,i)=><div key={i} onClick={()=>setV(i)} className={`flex-1 text-center py-2.5 text-[12px] font-medium cursor-pointer ${i===v?'text-wm-blue font-bold bg-wm-blue/5':'text-wm-muted'}`}>{i===0?x:x.replace('分会场','')}</div>)}</div>
       <div className="px-4 mt-4 pb-[80px] s2">
         {fl.length===0?(
           <div className="text-center py-12">
             <div className="text-4xl mb-3">📅</div>
             <p className="text-[14px] text-wm-muted">该阶段暂无日程安排</p>
           </div>
-        ):fl.map((s,i,r)=><div key={i} className="flex gap-3 mb-1">
+        ):fl.map((s,i,r)=><div key={i} className="flex gap-4 mb-1">
           <div className="w-[48px] shrink-0 pt-3.5"><span className={`text-[13px] font-bold ${s.live?'text-wm-blue':'text-wm-title'}`}>{s.time}</span></div>
-          <div className="bg-white flex-1 rounded-xl p-3.5 mb-2 cursor-pointer hover:shadow-md transition-shadow" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)',borderLeft:`3px solid ${s.c}`}}>
+          <div className="bg-white flex-1 rounded-[14px] p-4 mb-2 cursor-pointer hover:shadow-md transition-shadow" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)',borderLeft:`3px solid ${s.c}`}}>
             <div className="flex items-center gap-2 mb-1.5"><span className="text-[10px] font-bold px-2 py-[2px] rounded" style={{background:s.c+'10',color:s.c}}>{s.venue}</span>{s.live&&<span className="flex items-center gap-1 text-[10px] font-bold text-wm-live bg-red-50 px-2 py-[2px] rounded"><div className="w-1 h-1 bg-wm-live rounded-full" style={{animation:'dotPulse 1.5s infinite'}}/>直播中</span>}{s.tag&&<span className="text-[10px] font-medium text-wm-muted bg-gray-50 px-2 py-[2px] rounded">{s.tag}</span>}</div>
             <p className="text-[14px] font-semibold text-wm-title leading-snug">{s.title}</p>
           </div></div>)}
@@ -552,13 +554,13 @@ const PageB4=({go})=>(
       <SubNav title="日程详情" go={()=>go('B3')}/>
     </Hero>
     <div className="bg-wm-bg px-4">
-      <div className="bg-white rounded-2xl p-5" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03),0 4px 12px rgba(0,0,0,.04)'}}>
-        <div className="flex items-center gap-3 mb-4">
+      <div className="bg-white rounded-[14px] p-5" style={{boxShadow:'0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04)'}}>
+        <div className="flex items-center gap-4 mb-4">
           <span className="text-[14px] font-bold text-wm-blue">09:00 — 12:00</span>
           <span className="text-[14px] font-bold text-wm-blue bg-wm-blue/8 px-2.5 py-1 rounded-lg">主会场</span>
         </div>
         <h2 className="text-[20px] font-bold text-wm-title">开幕致辞 — CEO 主题演讲</h2>
-        <div className="flex items-center gap-3 mt-4">
+        <div className="flex items-center gap-4 mt-4">
           <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#0071DC] to-[#004B99] flex items-center justify-center text-white text-[14px] font-bold">张</div>
           <div><p className="text-[14px] font-semibold text-wm-title">张三</p><p className="text-[13px] text-wm-muted">CEO · 演讲嘉宾</p></div>
         </div>
@@ -590,7 +592,7 @@ const PageC1=({go})=>(
       </div>
     </Hero>
     <div className="bg-wm-bg px-5 pb-8">
-      <div className="bg-white rounded-2xl p-5 mt-4 s1" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03),0 4px 12px rgba(0,0,0,.04)'}}>
+      <div className="bg-white rounded-[14px] p-5 mt-4 s1" style={{boxShadow:'0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04)'}}>
         <div className="flex items-center justify-between mb-4"><span className="text-[14px] font-bold text-wm-title">已签到次数</span><span className="text-[24px] font-black text-wm-blue">3</span></div>
         <div className="flex items-center justify-between mb-4"><span className="text-[14px] font-bold text-wm-title">累计积分</span><span className="text-[24px] font-black text-wm-gold">260</span></div>
         <div className="flex items-center justify-between"><span className="text-[14px] font-bold text-wm-title">剩余次数</span><span className="text-[14px] text-wm-muted">今日还可签到 5 次</span></div>
@@ -643,9 +645,9 @@ const PageC2=({go})=>{
         
         <div className="bg-wm-bg px-5 pb-8">
           {/* Lottery Opportunity */}
-          <div className={`rounded-2xl p-4 mt-4 ${canLottery?'bg-gradient-to-r from-[#FFC220]/20 to-[#F5A623]/20 border-2 border-[#FFC220]/30':'bg-white border border-gray-100'}`} style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
-            <div className="flex items-center gap-3">
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl ${canLottery?'bg-[#FFC220]/20':'bg-gray-100'}`}>
+          <div className={`rounded-[14px] p-4 mt-4 ${canLottery?'bg-gradient-to-r from-[#FFC220]/20 to-[#F5A623]/20 border-2 border-[#FFC220]/30':'bg-white border border-gray-100'}`} style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+            <div className="flex items-center gap-4">
+              <div className={`w-12 h-12 rounded-[14px] flex items-center justify-center text-2xl ${canLottery?'bg-[#FFC220]/20':'bg-gray-100'}`}>
                 {canLottery?'🎁':'🔒'}
               </div>
               <div className="flex-1">
@@ -661,11 +663,11 @@ const PageC2=({go})=>{
           </div>
           
           {/* Booth List */}
-          <div className="bg-white rounded-2xl p-4 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+          <div className="bg-white rounded-[14px] p-4 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
             <p className="text-[15px] font-bold text-wm-title mb-3">展位打卡</p>
             <div className="space-y-2">
               {booths.map((b,i)=>[
-                <div key={b.id} className="flex items-center gap-3 p-3 rounded-xl" style={{background:b.status==='checked'?'#F0FDF4':b.status==='pending'?'#FEF3C7':'#F3F4F6'}}>
+                <div key={b.id} className="flex items-center gap-4 p-3 rounded-[14px]" style={{background:b.status==='checked'?'#F0FDF4':b.status==='pending'?'#FEF3C7':'#F3F4F6'}}>
                   <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-lg ${b.status==='checked'?'bg-wm-ok/20':b.status==='pending'?'bg-[#FFC220]/20':'bg-gray-200'}`}>
                     {b.status==='checked'?'✓':b.status==='pending'?'📍':'🔒'}
                   </div>
@@ -681,7 +683,7 @@ const PageC2=({go})=>{
           </div>
           
           {/* Tips */}
-          <div className="bg-white/60 rounded-xl p-4 mt-4">
+          <div className="bg-white/60 rounded-[14px] p-4 mt-4">
             <p className="text-[12px] text-wm-muted leading-relaxed">
               <span className="text-wm-blue font-semibold">💡 打卡攻略：</span>
               每打卡一个展位可获得50-100积分，打卡5个展位解锁盲盒抽奖机会，打卡8个展位解锁终极大奖！
@@ -703,9 +705,9 @@ const PageC3=({go})=>(
         <div className="w-32 h-1 bg-white/10 rounded-full mt-3"/></div>
     </Hero>
     <div className="bg-wm-bg px-4">
-      <div className="bg-white rounded-2xl p-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-14 h-14 rounded-xl bg-wm-ok/10 flex items-center justify-center text-2xl">🏪</div>
+      <div className="bg-white rounded-[14px] p-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+        <div className="flex items-center gap-4 mb-4">
+          <div className="w-14 h-14 rounded-[14px] bg-wm-ok/10 flex items-center justify-center text-2xl">🏪</div>
           <div className="flex-1"><p className="text-[15px] font-bold text-wm-title">沃尔玛官方旗舰店</p><p className="text-[12px] text-wm-muted">A 区 · 展位 A-12</p></div>
         </div>
         <div className="flex items-center gap-2 mb-4"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="1.5"/><span className="text-[12px] font-bold text-wm-muted">距您 18 米 · 主会场一楼</span></div>
@@ -732,9 +734,9 @@ const PageD4=({go})=>{
         <Hero h={140}><SubNav title="邀请好友" go={()=>go('A6')}/></Hero>
         <div className="bg-wm-bg px-5 pb-8">
           {/* Simple Poster Preview */}
-          <div className="bg-white rounded-2xl p-5 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+          <div className="bg-white rounded-[14px] p-5 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
             <p className="text-[15px] font-bold text-wm-title mb-4">生成专属邀约海报</p>
-            <div className="relative bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-xl p-4 aspect-[4/5] flex flex-col items-center justify-center">
+            <div className="relative bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-[14px] p-4 aspect-[4/5] flex flex-col items-center justify-center">
               <div className="absolute top-3 left-3"><Spark size={16} color="white"/></div>
               <div className="text-center">
                 <p className="text-white/60 text-[11px] tracking-wider mb-2">2026 WALMART GLOBAL SUMMIT</p>
@@ -756,7 +758,7 @@ const PageD4=({go})=>{
               <button 
                 onClick={generate}
                 disabled={generating}
-                className="w-full h-[52px] rounded-2xl border-none text-[16px] font-bold text-white cursor-pointer flex items-center justify-center gap-2"
+                className="w-full h-[52px] rounded-[14px] border-none text-[16px] font-bold text-white cursor-pointer flex items-center justify-center gap-2"
                 style={{background:'linear-gradient(135deg,#FFC220,#F5A623)',boxShadow:'0 6px 20px rgba(255,194,32,.35)'}}
               >
                 {generating ? (
@@ -769,7 +771,7 @@ const PageD4=({go})=>{
           </div>
           
           {/* Tips */}
-          <div className="bg-white/60 rounded-xl p-4 mt-4">
+          <div className="bg-white/60 rounded-[14px] p-4 mt-4">
             <p className="text-[12px] text-wm-muted leading-relaxed">
               <span className="text-wm-blue font-semibold">💡 小贴士：</span>
               好友扫码报名成功后，双方各获得 100 积分奖励！
@@ -817,7 +819,7 @@ const PageD1=({go})=>{
         
         <div className="bg-wm-bg px-5 pb-8">
           {/* Tab Switch */}
-          <div className="flex bg-white rounded-xl overflow-hidden mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+          <div className="flex bg-white rounded-[14px] overflow-hidden mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
             <div onClick={()=>setActiveTab('records')} className={`flex-1 py-3 text-center cursor-pointer ${activeTab==='records'?'bg-wm-blue/5 text-wm-blue font-bold':'text-wm-muted'}`}>
               <span className="text-[14px]">邀约记录</span>
             </div>
@@ -829,14 +831,14 @@ const PageD1=({go})=>{
           {activeTab==='records'?(
             <>
               {/* Search */}
-              <div className="flex items-center gap-3 mt-4">
-                <div className="flex-1 bg-white rounded-xl px-3 py-2.5 flex items-center gap-2" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+              <div className="flex items-center gap-4 mt-4">
+                <div className="flex-1 bg-white rounded-[14px] px-3 py-2.5 flex items-center gap-2" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="1.5">
                     <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
                   </svg>
                   <input className="flex-1 text-[14px] outline-none bg-transparent text-wm-title" placeholder="搜索已邀约人"/>
                 </div>
-                <div onClick={()=>go('D2')} className="w-10 h-10 rounded-xl bg-wm-blue/10 flex items-center justify-center cursor-pointer">
+                <div onClick={()=>go('D2')} className="w-10 h-10 rounded-[14px] bg-wm-blue/10 flex items-center justify-center cursor-pointer">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071DC" strokeWidth="2"><path d="M12 5v14m-7-7h14"/></svg>
                 </div>
               </div>
@@ -845,7 +847,7 @@ const PageD1=({go})=>{
               <div className="mt-4">
                 <p className="text-[13px] text-wm-muted mb-2">最近邀约 ({invites.length})</p>
                 {invites.map((p,i)=>[
-                  <div key={i} className="bg-white rounded-xl px-4 py-3.5 flex items-center gap-3 mb-2" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+                  <div key={i} className="bg-white rounded-[14px] px-4 py-3.5 flex items-center gap-4 mb-2" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0071DC] to-[#004B99] flex items-center justify-center text-white text-[14px] font-bold">{p.avatar}</div>
                     <div className="flex-1 min-w-0">
                       <p className="text-[14px] font-bold text-wm-title">{p.n}</p>
@@ -859,9 +861,9 @@ const PageD1=({go})=>{
           ):(
             <>
               {/* Poster Preview */}
-              <div className="bg-white rounded-2xl p-4 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+              <div className="bg-white rounded-[14px] p-4 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
                 <p className="text-[15px] font-bold text-wm-title mb-3">我的邀约海报</p>
-                <div className="relative bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-xl p-4 aspect-[4/5] flex flex-col items-center justify-center">
+                <div className="relative bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-[14px] p-4 aspect-[4/5] flex flex-col items-center justify-center">
                   <div className="absolute top-3 left-3"><Spark size={16} color="white"/></div>
                   <div className="text-center">
                     <p className="text-white/60 text-[11px] tracking-wider mb-2">2026 WALMART GLOBAL SUMMIT</p>
@@ -880,19 +882,19 @@ const PageD1=({go})=>{
                 </div>
                 
                 <div className="mt-4">
-                  <button onClick={()=>go('D3')} className="w-full h-[48px] rounded-xl border-none text-[15px] font-bold text-white cursor-pointer" style={{background:'linear-gradient(135deg,#FFC220,#F5A623)',boxShadow:'0 6px 20px rgba(255,194,32,.35)'}}>
+                  <button onClick={()=>go('D3')} className="w-full h-[48px] rounded-[14px] border-none text-[15px] font-bold text-white cursor-pointer" style={{background:'linear-gradient(135deg,#FFC220,#F5A623)',boxShadow:'0 6px 20px rgba(255,194,32,.35)'}}>
                     生成并分享海报
                   </button>
                 </div>
               </div>
               
               {/* Share Options */}
-              <div className="bg-white rounded-2xl p-4 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+              <div className="bg-white rounded-[14px] p-4 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
                 <p className="text-[14px] font-bold text-wm-title mb-3">分享方式</p>
-                <div className="grid grid-cols-4 gap-3">
+                <div className="grid grid-cols-4 gap-4">
                   {[{n:'微信',i:'M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9'},{n:'朋友圈',i:'M12 2a10 10 0 100 20 10 10 0 000-20z'},{n:'复制链接',i:'M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2M16 8h2a2 2 0 012 2v8a2 2 0 01-2 2h-8a2 2 0 01-2-2v-2'}].map((s,i)=>[
                     <div key={i} className="flex flex-col items-center gap-2 cursor-pointer">
-                      <div className="w-12 h-12 rounded-xl bg-wm-bg flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-[14px] bg-wm-bg flex items-center justify-center">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0071DC" strokeWidth="1.5">
                           <path d={s.i}/>
                         </svg>
@@ -926,13 +928,13 @@ const PageD2=({go})=>{
         <Hero h={160}><SubNav title="邀约好友" go={()=>go('D1')}/></Hero>
         <div className="bg-wm-bg px-5 pb-8">
           {/* Stats Card */}
-          <div className="bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-2xl p-5 mt-4" style={{boxShadow:'0 8px 24px rgba(0,113,220,.2)'}}>
+          <div className="bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-[14px] p-5 mt-4" style={{boxShadow:'0 8px 24px rgba(0,113,220,.2)'}}>
             <div className="flex items-center gap-2">
               <Spark size={24} color="#FFC220"/>
               <span className="text-white/70 text-[13px]">邀好友 · 一起看峰会</span>
             </div>
             <p className="text-white/50 text-[12px] mt-2 mb-4">每邀约 1 人成功参会，双方各获得 100 积分奖励</p>
-            <div className="flex items-center justify-between bg-white/10 rounded-xl px-4 py-3">
+            <div className="flex items-center justify-between bg-white/10 rounded-[14px] px-4 py-3">
               <div className="text-center">
                 <p className="text-white text-[22px] font-bold">2</p>
                 <p className="text-white/50 text-[11px] mt-0.5">已邀约人数</p>
@@ -949,9 +951,9 @@ const PageD2=({go})=>{
           </div>
           
           {/* Poster Preview */}
-          <div className="bg-white rounded-2xl p-5 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+          <div className="bg-white rounded-[14px] p-5 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
             <p className="text-[15px] font-bold text-wm-title mb-4">邀约海报预览</p>
-            <div className="relative bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-xl p-4 aspect-[4/5] flex flex-col items-center justify-center">
+            <div className="relative bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-[14px] p-4 aspect-[4/5] flex flex-col items-center justify-center">
               <div className="absolute top-3 left-3"><Spark size={16} color="white"/></div>
               <div className="text-center">
                 <p className="text-white/60 text-[11px] tracking-wider mb-2">2026 WALMART GLOBAL SUMMIT</p>
@@ -973,7 +975,7 @@ const PageD2=({go})=>{
               <button 
                 onClick={generate}
                 disabled={generating}
-                className="w-full h-[52px] rounded-2xl border-none text-[16px] font-bold text-white cursor-pointer flex items-center justify-center gap-2"
+                className="w-full h-[52px] rounded-[14px] border-none text-[16px] font-bold text-white cursor-pointer flex items-center justify-center gap-2"
                 style={{background:'linear-gradient(135deg,#FFC220,#F5A623)',boxShadow:'0 6px 20px rgba(255,194,32,.35)'}}
               >
                 {generating ? (
@@ -1003,8 +1005,8 @@ const PageD3=({go})=>{
         <Hero h={120}><SubNav title="生成海报" go={()=>go('D2')}/></Hero>
         <div className="bg-wm-bg px-5 pb-8">
           {/* Poster Card */}
-          <div className="bg-white rounded-2xl p-4 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
-            <div className="relative bg-gradient-to-br from-[#001D3D] via-[#003566] to-[#0071DC] rounded-xl overflow-hidden">
+          <div className="bg-white rounded-[14px] p-4 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+            <div className="relative bg-gradient-to-br from-[#001D3D] via-[#003566] to-[#0071DC] rounded-[14px] overflow-hidden">
               {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-32 h-32 rounded-full" style={{background:'radial-gradient(circle,rgba(255,194,32,.15) 0%,transparent 60%)',transform:'translate(30%,-30%)'}}/>
               <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.2) 0%,transparent 60%)',transform:'translate(-30%,30%)'}}/>
@@ -1025,7 +1027,7 @@ const PageD3=({go})=>{
                 
                 {/* QR Code */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-white rounded-xl p-3" style={{boxShadow:'0 4px 12px rgba(0,0,0,.15)'}}>
+                  <div className="bg-white rounded-[14px] p-3" style={{boxShadow:'0 4px 12px rgba(0,0,0,.15)'}}>
                     <div className="w-32 h-32 bg-wm-bg rounded-lg flex items-center justify-center">
                       {/* Simulated QR Code */}
                       <div className="grid grid-cols-5 gap-0.5 w-24 h-24">
@@ -1041,7 +1043,7 @@ const PageD3=({go})=>{
                 
                 {/* Footer */}
                 <div className="mt-6 pt-4 border-t border-white/10">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                       <span className="text-white text-[14px] font-bold">张</span>
                     </div>
@@ -1056,10 +1058,10 @@ const PageD3=({go})=>{
           </div>
           
           {/* Action Buttons */}
-          <div className="grid grid-cols-2 gap-3 mt-4">
+          <div className="grid grid-cols-2 gap-4 mt-4">
             <button 
               onClick={savePoster}
-              className="h-[48px] rounded-xl border-none text-[15px] font-bold text-white cursor-pointer flex items-center justify-center gap-2"
+              className="h-[48px] rounded-[14px] border-none text-[15px] font-bold text-white cursor-pointer flex items-center justify-center gap-2"
               style={{background:'linear-gradient(135deg,#0071DC,#0065C7)',boxShadow:'0 4px 12px rgba(0,113,220,.3)'}}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -1070,7 +1072,7 @@ const PageD3=({go})=>{
               {saved ? '已保存' : '保存海报'}
             </button>
             <button 
-              className="h-[48px] rounded-xl border border-wm-blue/30 text-[15px] font-bold text-wm-blue cursor-pointer flex items-center justify-center gap-2 bg-white"
+              className="h-[48px] rounded-[14px] border border-wm-blue/30 text-[15px] font-bold text-wm-blue cursor-pointer flex items-center justify-center gap-2 bg-white"
               style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -1082,7 +1084,7 @@ const PageD3=({go})=>{
           </div>
           
           {/* Tips */}
-          <div className="bg-white/60 rounded-xl p-4 mt-4">
+          <div className="bg-white/60 rounded-[14px] p-4 mt-4">
             <p className="text-[12px] text-wm-muted leading-relaxed">
               <span className="text-wm-blue font-semibold">💡 小贴士：</span>
               保存海报后分享到朋友圈或微信群，好友扫码即可完成报名。每成功邀约 1 人，双方各获得 100 积分奖励！
@@ -1099,16 +1101,16 @@ const PageE1=({go})=>(
   <div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
     <Hero h={140}><SubNav title="通知消息" go={()=>go('B1')}/></Hero>
     <div className="bg-wm-bg px-5 pb-8">
-      <div className="bg-white rounded-2xl overflow-hidden mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
-        <div className="flex items-center gap-3 px-4 py-3.5 border-b" style={{borderColor:'#F3F4F6'}}><div className="w-9 h-9 rounded-xl bg-wm-blue/10 flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071DC" strokeWidth="1.5"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div className="flex-1 min-w-0"><p className="text-[14px] font-semibold text-wm-title">您已成功报名峰会！</p><p className="text-[12px] text-wm-muted mt-0.5">2小时前</p></div><div className="w-2 h-2 rounded-full bg-wm-blue"/></div>
+      <div className="bg-white rounded-[14px] overflow-hidden mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+        <div className="flex items-center gap-4 px-4 py-3.5 border-b" style={{borderColor:'#F3F4F6'}}><div className="w-9 h-9 rounded-[14px] bg-wm-blue/10 flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071DC" strokeWidth="1.5"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div className="flex-1 min-w-0"><p className="text-[14px] font-semibold text-wm-title">您已成功报名峰会！</p><p className="text-[12px] text-wm-muted mt-0.5">2小时前</p></div><div className="w-2 h-2 rounded-full bg-wm-blue"/></div>
         {[
           {title:'展位打卡提醒',sub:'您还有 5 个展位未打卡',time:'昨天',c:'#FFC220'},
           {title:'直播即将开始',sub:'主会场开幕式 30 分钟后开始',time:'昨天',c:'#EF4444'},
           {title:'邀约成功',sub:'李明已确认参会，奖励已到账',time:'2天前',c:'#10B981'},
           {title:'系统通知',sub:'您的盲盒抽奖机会已解锁',time:'3天前',c:'#8B5CF6'},{title:'系统通知',sub:'欢迎来到沃尔玛全球峰会',time:'1周前',c:'#9CA3AF'},
         ].map((n,i,r)=>(
-          <div key={i} className="flex items-center gap-3 px-4 py-3.5 cursor-pointer hover:bg-[#FAFBFC] transition-colors" style={i<r.length-1?{borderTop:'1px solid #F3F4F6'}:{}} onClick={()=>go('E2')}>
-            <div className={`w-9 h-9 rounded-xl flex items-center justify-center`} style={{background:n.c+'14'}}><div className="w-2.5 h-2.5 rounded-full" style={{background:n.c}}/></div>
+          <div key={i} className="flex items-center gap-4 px-4 py-3.5 cursor-pointer hover:bg-[#FAFBFC] transition-colors" style={i<r.length-1?{borderTop:'1px solid #F3F4F6'}:{}} onClick={()=>go('E2')}>
+            <div className={`w-9 h-9 rounded-[14px] flex items-center justify-center`} style={{background:n.c+'14'}}><div className="w-2.5 h-2.5 rounded-full" style={{background:n.c}}/></div>
             <div className="flex-1 min-w-0"><p className="text-[14px] font-semibold text-wm-title">{n.title}</p><p className="text-[12px] text-wm-muted mt-0.5 truncate">{n.sub}</p></div>
             <span className="text-[11px] text-wm-muted shrink-0">{n.time}</span>
           </div>
@@ -1123,7 +1125,7 @@ const PageE2=({go})=>(
   <div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
     <Hero h={140}><SubNav title="通知详情" go={()=>go('E1')}/></Hero>
     <div className="bg-wm-bg px-5 pb-8 mt-4">
-      <div className="bg-white rounded-2xl p-5">
+      <div className="bg-white rounded-[14px] p-5">
         <p className="text-[13px] font-bold text-wm-blue mb-2">系统通知</p>
         <h2 className="text-[18px] font-bold text-wm-title">您已成功报名峰会！</h2>
         <p className="text-[12px] text-wm-muted mt-1">5月15日 14:30</p>
@@ -1147,8 +1149,8 @@ const PageF1=({go})=>{
     {phase==='won'&&confettis.map((c,i)=><div key={i} className="absolute z-[60] rounded-sm" style={{left:c.x,top:-10,width:c.size,height:c.size*1.5,background:c.color,animation:`confetti 2s ease-in ${c.delay}s both`}}/>)}
     <div className="flex-1 overflow-auto">
       <div className="relative pb-[24px]" style={{minHeight:200,background:'linear-gradient(170deg,#001D3D 0%,#003566 40%,#0071DC 100%)'}}><div className="absolute top-[-40px] right-[-30px] w-[200px] h-[200px] rounded-full" style={{background:'radial-gradient(circle,rgba(255,194,32,.12) 0%,transparent 60%)'}}/>
-        <div className="relative z-10 px-5 pt-4 pb-2 flex items-center"><div className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/10 cursor-pointer" onClick={()=>go(-1)}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg></div><span className="flex-1 text-center text-white text-[16px] font-bold">盲盒抽奖</span><div className="w-9"/></div>
-        <div className="relative z-10 px-5 pt-2 pb-5 s1"><div className="flex items-center gap-3 bg-white/[.08] backdrop-blur-sm rounded-2xl px-4 py-3 border border-white/[.06]"><Spark/><div><p className="text-white text-[14px] font-bold">{phase==='won'?'恭喜中奖！':'您有 1 次抽奖机会'}</p><p className="text-white/40 text-[12px] mt-0.5">{phase==='won'?'请在峰会当天领取':'集齐 8 个展位打卡解锁'}</p></div></div></div>
+        <div className="relative z-10 px-5 pt-4 pb-2 flex items-center"><div className="w-9 h-9 flex items-center justify-center rounded-[14px] bg-white/10 cursor-pointer" onClick={()=>go(-1)}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg></div><span className="flex-1 text-center text-white text-[16px] font-bold">盲盒抽奖</span><div className="w-9"/></div>
+        <div className="relative z-10 px-5 pt-2 pb-5 s1"><div className="flex items-center gap-4 bg-white/[.08] backdrop-blur-sm rounded-[14px] px-4 py-3 border border-white/[.06]"><Spark/><div><p className="text-white text-[14px] font-bold">{phase==='won'?'恭喜中奖！':'您有 1 次抽奖机会'}</p><p className="text-white/40 text-[12px] mt-0.5">{phase==='won'?'请在峰会当天领取':'集齐 8 个展位打卡解锁'}</p></div></div></div>
         <div className="absolute left-0 right-0 bottom-0 h-[24px] bg-wm-bg" style={{borderRadius:'20px 20px 0 0'}}/>
       </div>
       <div className="bg-wm-bg flex flex-col items-center px-5">
@@ -1163,9 +1165,9 @@ const PageF1=({go})=>{
             <div className="w-[180px] h-[180px] rounded-[28px] flex flex-col items-center justify-center gap-1" style={{background:'linear-gradient(155deg,#FFF8E1,#FFECB3)',border:'2px solid #FFC220',boxShadow:'0 12px 40px rgba(255,194,32,.25)'}}>
               <div className="text-5xl">{prize.e}</div><p className="text-[16px] font-black text-[#E65100]">{prize.name}</p><p className="text-[11px] text-wm-muted">{prize.desc}</p><span className="text-[10px] font-bold text-white px-2.5 py-0.5 rounded-full mt-1" style={{background:prize.c}}>{prize.tier}</span></div></div>}
         </div>
-        {phase==='idle'&&<button onClick={open} className="w-full h-[52px] rounded-2xl border-none text-[17px] font-bold cursor-pointer s2" style={{background:'linear-gradient(135deg,#FFC220,#F5A623)',color:'#5D3A00',boxShadow:'0 6px 20px rgba(255,194,32,.35)'}}>开启盲盒</button>}
-        {phase==='won'&&prize&&<button className="w-full h-[52px] rounded-2xl border-none text-[16px] font-bold text-white cursor-pointer mb-4" style={{background:'linear-gradient(135deg,#0071DC,#0065C7)',boxShadow:'0 4px 12px rgba(0,113,220,.3)'}}>查看兑换详情</button>}
-        <div className="w-full mb-8 s3"><p className="text-[15px] font-bold text-wm-title mb-3">奖品池</p><div className="grid grid-cols-2 gap-3">{prizes.map((p,i)=><div key={i} className="bg-white rounded-2xl p-3.5 text-center" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03),0 4px 12px rgba(0,0,0,.04)'}}><div className="text-3xl leading-none mb-2">{p.e}</div><p className="text-[13px] font-bold text-wm-title">{p.name}</p><p className="text-[11px] text-wm-muted mt-0.5">{p.desc}</p><span className="inline-block mt-1.5 text-[10px] font-bold px-2 py-[2px] rounded-full" style={{background:p.c+'14',color:p.c}}>{p.tier}</span></div>)}</div></div>
+        {phase==='idle'&&<button onClick={open} className="w-full h-[52px] rounded-[14px] border-none text-[17px] font-bold cursor-pointer s2" style={{background:'linear-gradient(135deg,#FFC220,#F5A623)',color:'#5D3A00',boxShadow:'0 6px 20px rgba(255,194,32,.35)'}}>开启盲盒</button>}
+        {phase==='won'&&prize&&<button className="w-full h-[52px] rounded-[14px] border-none text-[16px] font-bold text-white cursor-pointer mb-4" style={{background:'linear-gradient(135deg,#0071DC,#0065C7)',boxShadow:'0 4px 12px rgba(0,113,220,.3)'}}>查看兑换详情</button>}
+        <div className="w-full mb-8 s3"><p className="text-[15px] font-bold text-wm-title mb-3">奖品池</p><div className="grid grid-cols-2 gap-4">{prizes.map((p,i)=><div key={i} className="bg-white rounded-[14px] p-4 text-center" style={{boxShadow:'0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04)'}}><div className="text-3xl leading-none mb-2">{p.e}</div><p className="text-[13px] font-bold text-wm-title">{p.name}</p><p className="text-[11px] text-wm-muted mt-0.5">{p.desc}</p><span className="inline-block mt-1.5 text-[10px] font-bold px-2 py-[2px] rounded-full" style={{background:p.c+'14',color:p.c}}>{p.tier}</span></div>)}</div></div>
       </div>
     </div>
     <TabBar active="F1"/>
@@ -1177,8 +1179,8 @@ const PageF2=({go})=>(
   <div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
     <Hero h={140}><SubNav title="奖品详情" go={()=>go('F1')}/></Hero>
     <div className="bg-wm-bg px-5 pb-8 mt-4">
-      <div className="bg-white rounded-2xl p-5" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03),0 4px 12px rgba(0,0,0,.04)'}}>
-        <div className="flex items-center gap-4 mb-5"><div className="w-[72px] h-[72px] rounded-2xl bg-wm-gold/10 flex items-center justify-center text-4xl">📱</div><div><p className="text-[18px] font-bold text-wm-title">iPhone 16 Pro</p><p className="text-[13px] text-wm-muted mt-0.5">256GB 深空黑</p><span className="inline-block mt-1.5 text-[10px] font-bold text-white px-2.5 py-1 rounded-full" style={{background:'#0071DC'}}>SSR</span></div></div>
+      <div className="bg-white rounded-[14px] p-5" style={{boxShadow:'0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04)'}}>
+        <div className="flex items-center gap-4 mb-5"><div className="w-[72px] h-[72px] rounded-[14px] bg-wm-gold/10 flex items-center justify-center text-4xl">📱</div><div><p className="text-[18px] font-bold text-wm-title">iPhone 16 Pro</p><p className="text-[13px] text-wm-muted mt-0.5">256GB 深空黑</p><span className="inline-block mt-1.5 text-[10px] font-bold text-white px-2.5 py-1 rounded-full" style={{background:'#0071DC'}}>SSR</span></div></div>
         <div className="pt-4" style={{borderTop:'1px solid #F3F4F6'}}>
           <div className="flex items-center gap-2 mb-4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFC220" strokeWidth="1.5"/><span className="text-[13px] font-semibold text-wm-title">兑换方式</span></div>
           <p className="text-[13px] text-wm-muted leading-relaxed">在峰会现场兑奖中心出示门票即可领取。退出时间截止至当日 18:00，逾期视为放弃。</p>
@@ -1212,23 +1214,23 @@ const PageG1=({go})=>{
         <div className="absolute top-8 right-5" style={{animation:'float 5s ease-in-out infinite',opacity:.06}}><Spark size={44} color="white"/></div>
         <div className="relative z-10 px-5 pt-4 pb-2"><Spark size={16}/><span className="ml-2 text-white/50 text-[11px] font-bold tracking-[.15em] uppercase">2026沃尔玛全球峰会</span>
           <div className="relative z-10 px-5 pt-3 s1"><div className="flex items-center gap-4">
-            <div className="w-[64px] h-[64px] rounded-2xl border-[2.5px] border-white/20 bg-white/10 backdrop-blur-sm flex items-center justify-center" style={{boxShadow:'0 6px 20px rgba(0,0,0,.2)'}}><span className="text-white text-[24px] font-bold">张</span></div>
+            <div className="w-[64px] h-[64px] rounded-[14px] border-[2.5px] border-white/20 bg-white/10 backdrop-blur-sm flex items-center justify-center" style={{boxShadow:'0 6px 20px rgba(0,0,0,.2)'}}><span className="text-white text-[24px] font-bold">张</span></div>
             <div><p className="text-white text-[20px] font-bold tracking-tight">张三</p><p className="text-white/40 text-[13px] mt-0.5">沃尔玛官方旗舰店</p><div className="flex items-center gap-1.5 mt-1.5"><span className="bg-white/12 text-white/80 text-[10px] font-bold px-2 py-[2px] rounded-full border border-white/8">卖家</span><span className="bg-[#FFC220]/18 text-[#FFC220] text-[10px] font-bold px-2 py-[2px] rounded-full border border-[#FFC220]/20">VIP</span></div></div></div>
-            <div className="flex gap-2 mt-4 s2">{[{n:'12',l:'邀约人数'},{n:'3/8',l:'打卡进度'}].map((s,i)=><div key={i} className="flex-1 bg-white/[.1] backdrop-blur-sm border border-white/[.08] rounded-xl text-center py-2.5"><p className="text-white text-[20px] font-bold">{s.n}</p><p className="text-white/35 text-[10px] mt-0.5">{s.l}</p></div>)}</div>
+            <div className="flex gap-2 mt-4 s2">{[{n:'12',l:'邀约人数'},{n:'3/8',l:'打卡进度'}].map((s,i)=><div key={i} className="flex-1 bg-white/[.1] backdrop-blur-sm border border-white/[.08] rounded-[14px] text-center py-2.5"><p className="text-white text-[20px] font-bold">{s.n}</p><p className="text-white/35 text-[10px] mt-0.5">{s.l}</p></div>)}</div>
           </div>
         </div>
         <div className="absolute left-0 right-0 bottom-0 h-[28px] bg-wm-bg" style={{borderRadius:'22px 22px 0 0'}}/>
       </div>
       <div className="bg-wm-bg px-4 pt-4">
-        <div onClick={()=>go('A7')} className="bg-white rounded-xl px-4 py-3 flex items-center gap-3 cursor-pointer" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+        <div onClick={()=>go('A7')} className="bg-white rounded-[14px] px-4 py-3 flex items-center gap-4 cursor-pointer" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
           <div className="w-1.5 h-10 rounded-full bg-gradient-to-b from-wm-blue to-wm-dark"/><div className="flex-1"><p className="text-[14px] font-bold text-wm-title">电子票券</p><p className="text-[12px] text-wm-muted mt-0.5">主会场通行证 · 有效</p></div>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
         </div>
-        <div className="px-4 mt-5"><div className="grid grid-cols-4 gap-x-3 gap-y-4">{ms.map((a,i)=><div key={i} className="flex flex-col items-center gap-1.5 cursor-pointer group"><div className={`w-11 h-11 rounded-xl bg-gradient-to-br from-[#0071DC] to-[#004B99] flex items-center justify-center text-white group-hover:scale-110 transition-transform`} style={{boxShadow:'0 3px 10px rgba(0,0,0,.1)'}}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={a.d}/></svg></div><span className="text-[11px] font-semibold text-wm-body">{a.l}</span></div>)}</div></div>
-        <div className="px-4 mt-5"><div className="bg-white rounded-xl overflow-hidden" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>{menus.map((m,i)=>[
+        <div className="px-4 mt-5"><div className="grid grid-cols-4 gap-x-3 gap-y-4">{ms.map((a,i)=><div key={i} className="flex flex-col items-center gap-1.5 cursor-pointer group"><div className={`w-11 h-11 rounded-[14px] bg-gradient-to-br from-[#0071DC] to-[#004B99] flex items-center justify-center text-white group-hover:scale-110 transition-transform`} style={{boxShadow:'0 3px 10px rgba(0,0,0,.1)'}}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={a.d}/></svg></div><span className="text-[11px] font-semibold text-wm-body">{a.l}</span></div>)}</div></div>
+        <div className="px-4 mt-5"><div className="bg-white rounded-[14px] overflow-hidden" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>{menus.map((m,i)=>[
           <div key={i} className="mrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0071DC" strokeWidth="1.5"><path d={m.d}/></svg><span className="flex-1 text-[14px] font-semibold text-wm-title">{m.l}</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg></div>
         ])}</div></div>
-        <button className="w-full h-[48px] mt-5 rounded-xl bg-wm-live/8 text-wm-live text-[15px] font-semibold border-none cursor-pointer hover:bg-wm-live/12 transition-colors">退出登录</button>
+        <button className="w-full h-[48px] mt-5 rounded-[14px] bg-wm-live/8 text-wm-live text-[15px] font-semibold border-none cursor-pointer hover:bg-wm-live/12 transition-colors">退出登录</button>
         <div className="h-[80px]"/></div>
     </div>
     <TabBar active="G1"/></div>);
@@ -1239,8 +1241,8 @@ const PageG2=({go})=>(
   <div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
     <Hero h={140}><SubNav title="我的报名" go={()=>go('G1')}/></Hero>
     <div className="bg-wm-bg px-5 pb-8">
-      <div className="bg-white rounded-2xl p-5 mt-4 s1" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03),0 4px 12px rgba(0,0,0,.04)'}}>
-        <div className="flex items-center gap-2 mb-4"><div className="w-10 h-10 rounded-xl bg-wm-ok/10 flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div className="flex-1"><p className="text-[15px] font-bold text-wm-title">报名已确认</p><p className="text-[13px] text-wm-muted mt-0.5">沃尔玛全球峰会 · 2026</p></div></div>
+      <div className="bg-white rounded-[14px] p-5 mt-4 s1" style={{boxShadow:'0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04)'}}>
+        <div className="flex items-center gap-2 mb-4"><div className="w-10 h-10 rounded-[14px] bg-wm-ok/10 flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div className="flex-1"><p className="text-[15px] font-bold text-wm-title">报名已确认</p><p className="text-[13px] text-wm-muted mt-0.5">沃尔玛全球峰会 · 2026</p></div></div>
         {[{l:'身份',v:'卖家'},{l:'姓名',v:'张三'},{l:'票券编号',v:'WC2026-00128'},{l:'状态',v:'已确认 · 有效'},{l:'有效期',v:'2026-09-16'}].map((r,i)=><div key={i} className="flex items-center justify-between py-2.5" style={i<4?{borderBottom:'1px solid #F5F5F7'}:{}}><span className="text-[13px] text-wm-muted">{r.l}</span><span className={`text-[13px] font-semibold ${r.l==='状态'?'text-wm-ok':''}`}>{r.v}</span></div>)}
       
     
@@ -1251,8 +1253,8 @@ const PageG3=({go})=>(
   <div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
     <Hero h={140}><SubNav title="我的奖品" go={()=>go('G1')}/></Hero>
     <div className="bg-wm-bg px-5 pb-8">
-      <div className="bg-white rounded-2xl p-4 mt-4 flex items-center gap-4 s1" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03),0 4px 12px rgba(0,0,0,.04)'}}>
-        <div className="w-[64px] h-[64px] rounded-xl bg-wm-ok/10 flex items-center justify-center text-3xl">💳</div>
+      <div className="bg-white rounded-[14px] p-4 mt-4 flex items-center gap-4 s1" style={{boxShadow:'0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04)'}}>
+        <div className="w-[64px] h-[64px] rounded-[14px] bg-wm-ok/10 flex items-center justify-center text-3xl">💳</div>
         <div className="flex-1"><p className="text-[15px] font-bold text-wm-title">沃尔玛礼品卡</p><p className="text-[13px] text-wm-muted mt-0.5">价值 ¥500</p></div>
         <span className="text-[11px] font-bold text-wm-ok bg-wm-ok/8 px-2.5 py-1 rounded-full">可使用</span>
       
@@ -1280,8 +1282,8 @@ const PageH1=({go})=>{
       </div>
       <div className="flex-1 overflow-auto bg-wm-bg px-4 pb-[80px]">
         {lives.map((l,i)=>(
-          <div key={i} className="bg-white rounded-xl px-4 py-3.5 flex gap-3.5 cursor-pointer mt-3" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}} onClick={()=>go('H2')}>
-            <div className="w-[80px] h-[50px] rounded-xl overflow-hidden relative shrink-0" style={{background:l.live?'linear-gradient(135deg,#001D3D,#0071DC)':'linear-gradient(135deg,#374151,#1F2937)'}}>
+          <div key={i} className="bg-white rounded-[14px] px-4 py-3.5 flex gap-4 cursor-pointer mt-3" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}} onClick={()=>go('H2')}>
+            <div className="w-[80px] h-[50px] rounded-[14px] overflow-hidden relative shrink-0" style={{background:l.live?'linear-gradient(135deg,#001D3D,#0071DC)':'linear-gradient(135deg,#374151,#1F2937)'}}>
               <div className="absolute inset-0 flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="white" opacity=".5"><path d="M8 5v14l11-7z"/></svg></div>
               {l.live&&<div className="absolute top-1.5 left-1.5 flex items-center gap-1 bg-wm-live/90 text-white text-[8px] font-bold px-1.5 py-[1px] rounded"><div className="w-1 h-1 bg-white rounded-full"/>LIVE</div>}
             </div>
@@ -1303,7 +1305,7 @@ const PageH2=({go})=>(
   <div className="h-full flex flex-col relative">
     <div className="shrink-0 relative" style={{minHeight:220,background:'linear-gradient(170deg,#001D3D 0%,#003566 40%,#0071DC 100%)'}}>
       <div className="relative z-10 px-5 pt-4 pb-2 flex items-center">
-        <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/10 cursor-pointer" onClick={()=>go('H1')}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+        <div className="w-9 h-9 flex items-center justify-center rounded-[14px] bg-white/10 cursor-pointer" onClick={()=>go('H1')}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg></div>
         <span className="flex-1 text-center text-white text-[16px] font-bold">主会场开幕式</span>
         <div className="w-9"/>
       </div>
@@ -1312,7 +1314,7 @@ const PageH2=({go})=>(
       <div className="absolute bottom-4 left-5 z-10"><p className="text-white text-[26px] font-black">1.2万人在线</p></div>
     </div>
     <div className="flex-1 overflow-auto bg-wm-bg">
-      <div className="bg-white mx-4 rounded-xl px-4 py-3 flex items-center gap-3 mt-3" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
+      <div className="bg-white mx-4 rounded-[14px] px-4 py-3 flex items-center gap-4 mt-3" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
         <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#0071DC] to-[#004B99] flex items-center justify-center text-white text-[12px] font-bold">张</div>
         <div className="flex-1"><p className="text-[13px] font-semibold text-wm-title">CEO 主题演讲</p><p className="text-[11px] text-wm-muted">09:00 正在进行中</p></div>
       </div>
@@ -1327,8 +1329,8 @@ const PageI1=({go})=>(
       <div className="relative z-10 px-5 pt-2 pb-0"><h1 className="text-white text-[26px] font-black tracking-tight">资料下载</h1><p className="text-white/35 text-[13px] mt-1">峰会演讲 PPT 及报告</p></div>
     </Hero>
     <div className="bg-wm-bg px-4 pb-8">
-      {[{n:'2026 全球战略发布 PPT',s:'演讲资料',d:'5min前下载了128次',c:'#0071DC'},{n:'广告智能升级白皮书',s:'研究报告',d:'2小时前下载了356次',c:'#8B5CF6'},{n:'卖家增长方法论',s:'演讲资料',d:'5小时前下载了92次',c:'#10B981'},{n:'TPO (Trade Partner Optimization)',s:'品牌资料',d:'1天前下载了210次',c:'#F59E0B'}].map((f,i,r)=><div key={i} className="bg-white rounded-xl px-4 py-3.5 flex items-center gap-3 mt-3 first:mt-4 hover:bg-[#FAFBFC] transition-colors" style={i<r.length-1?{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}:{}} onClick={()=>go('I2')}>
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{background:f.c+'14'}}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={f.c} strokeWidth="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+      {[{n:'2026 全球战略发布 PPT',s:'演讲资料',d:'5min前下载了128次',c:'#0071DC'},{n:'广告智能升级白皮书',s:'研究报告',d:'2小时前下载了356次',c:'#8B5CF6'},{n:'卖家增长方法论',s:'演讲资料',d:'5小时前下载了92次',c:'#10B981'},{n:'TPO (Trade Partner Optimization)',s:'品牌资料',d:'1天前下载了210次',c:'#F59E0B'}].map((f,i,r)=><div key={i} className="bg-white rounded-[14px] px-4 py-3.5 flex items-center gap-4 mt-3 first:mt-4 hover:bg-[#FAFBFC] transition-colors" style={i<r.length-1?{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}:{}} onClick={()=>go('I2')}>
+        <div className="w-10 h-10 rounded-[14px] flex items-center justify-center shrink-0" style={{background:f.c+'14'}}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={f.c} strokeWidth="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
         <div className="flex-1 min-w-0"><p className="text-[14px] font-semibold text-wm-title truncate">{f.n}</p><p className="text-[12px] text-wm-muted mt-0.5">{f.s}</p></div>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg></div>)}
     
@@ -1339,15 +1341,15 @@ const PageI2=({go})=>(
   <div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
     <Hero h={140}><SubNav title="资料详情" go={()=>go('I1')}/></Hero>
     <div className="bg-wm-bg px-5 pb-8 mt-4">
-      <div className="bg-white rounded-2xl p-5" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03),0 4px 12px rgba(0,0,0,.04)'}}>
-        <div className="w-14 h-14 rounded-2xl bg-wm-blue/10 flex items-center justify-center mb-4"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0071DC" strokeWidth="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+      <div className="bg-white rounded-[14px] p-5" style={{boxShadow:'0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04)'}}>
+        <div className="w-14 h-14 rounded-[14px] bg-wm-blue/10 flex items-center justify-center mb-4"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0071DC" strokeWidth="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
         <h2 className="text-[20px] font-bold text-wm-title">2026 全球战略发布 PPT</h2>
         <p className="text-[13px] text-wm-muted mt-1">演讲资料 · PDF · 18.5 MB</p>
         <div className="mt-5 pt-4" style={{borderTop:'1px solid #F3F4F6'}}>
           <div className="flex items-center justify-between mb-3"><span className="text-[13px] font-semibold text-wm-title">文档简介</span><span className="text-[12px] text-wm-muted">更新于 1小时前</span></div>
           <p className="text-[13px] text-wm-body leading-relaxed">沃尔玛中国 2026 全球战略发布演讲材料，包含市场趋势分析、增长策略路线图及合作伙伴计划。</p>
         </div>
-        <div className="mt-4 flex gap-3"><Btn onClick={()=>alert('已开始下载')}><span className="flex items-center justify-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>下载</span></Btn><Btn outline>收藏</Btn></div>
+        <div className="mt-4 flex gap-4"><Btn onClick={()=>alert('已开始下载')}><span className="flex items-center justify-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>下载</span></Btn><Btn outline>收藏</Btn></div>
       </div>
     </div>
   </div></div>);
