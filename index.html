@@ -85,10 +85,10 @@ const PageA1=({go})=>{
           <div className="absolute top-[-80px] right-[-50px] w-[260px] h-[260px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.25) 0%,transparent 55%)'}}></div>
           <div className="absolute bottom-[20px] left-[-40px] w-[160px] h-[160px] rounded-full" style={{background:'radial-gradient(circle,rgba(255,194,32,.1) 0%,transparent 55%)'}}></div>
           <div className="absolute top-8 right-6" style={{animation:'float 5s ease-in-out infinite',opacity:.06}}><Spark size={56} color="white"/></div>
-          <div className="relative z-10 px-5 pt-3">
-            <div className="flex items-center pb-1"><Spark size={16}/><span className="ml-2 text-white/50 text-[11px] font-bold tracking-[.18em] uppercase">2026沃尔玛全球峰会</span><div className="flex-1"/></div>
-            <h1 className="text-white text-[26px] font-black leading-[1.05] tracking-tight mt-1">2026<br/>沃尔玛全球<br/>峰会</h1>
-            <div className="flex items-center gap-2.5 mt-2 mb-2">
+          <div className="relative z-10 px-5 pt-10 pb-6">
+            <div className="flex items-center pb-2"><Spark size={16}/><span className="ml-2 text-white/50 text-[11px] font-bold tracking-[.18em] uppercase">2026沃尔玛全球峰会</span><div className="flex-1"/></div>
+            <h1 className="text-white text-[28px] font-black leading-[1.05] tracking-tight mt-2">2026<br/>沃尔玛全球<br/>峰会</h1>
+            <div className="flex items-center gap-2.5 mt-3 mb-3">
               <span className="text-white/45 text-[13px]">9月16日 · 深圳</span>
               <div className="flex items-center gap-1.5 bg-[#FFC220]/15 rounded-full px-3 py-[3px] border border-[#FFC220]/20">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#FFC220]" style={{animation:'dotPulse 1.5s infinite'}}/>
@@ -98,8 +98,8 @@ const PageA1=({go})=>{
           </div>
           <div className="h-[28px] bg-wm-bg" style={{borderRadius:'22px 22px 0 0', marginTop: 0}}></div>
         </div>
-        <div className="bg-wm-bg px-5 flex flex-col" style={{paddingBottom: '20px'}}>
-          <div className="space-y-3 s3">
+        <div className="bg-wm-bg px-5 flex flex-col flex-1" style={{paddingBottom: '0px'}}>
+          <div className="space-y-4 s3">
             {roles.map((r, i) => (
               <div 
                 key={r.id}
@@ -108,7 +108,7 @@ const PageA1=({go})=>{
                   const target = r.id === 'seller' ? 'A2' : (r.id === 'employee' ? 'A4' : 'A3');
                   setTimeout(() => go(target), 200); 
                 }}
-                className={`bg-white rounded-[14px] p-4 cursor-pointer transition-all ${role === r.id ? 'ring-2 ring-wm-blue' : ''}`}
+                className={`bg-white rounded-[14px] p-5 cursor-pointer transition-all ${role === r.id ? 'ring-2 ring-wm-blue' : ''}`}
                 style={{boxShadow: '0 1px 3px rgba(0,0,0,.03)'}}
               >
                 <div className="flex items-center gap-4">
@@ -126,7 +126,7 @@ const PageA1=({go})=>{
               </div>
             ))}
           </div>
-          <p className="text-[12px] text-wm-muted text-center mt-3">
+          <p className="text-[12px] text-wm-muted text-center mt-2 mb-1">
             选择身份后需要进行验证，请准备好相关资质材料
           </p>
         </div>
