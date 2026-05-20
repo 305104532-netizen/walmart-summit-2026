@@ -79,15 +79,15 @@ const PageA1=({go})=>{
     {id: 'service', title: '服务商', desc: '服务商/生态伙伴', icon: '🤝', color: '#F59E0B'},
   ];
   return(
-    <div className="h-screen flex flex-col overflow-hidden bg-wm-bg" style={{paddingBottom:'20px'}}>
-      <div className="flex-1 relative overflow-hidden" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)'}}>
+    <div className="h-screen flex flex-col overflow-auto bg-wm-bg">
+      <div className="shrink-0 relative" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)'}}>
           <div className="absolute top-[-80px] right-[-50px] w-[260px] h-[260px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.25) 0%,transparent 55%)'}}></div>
           <div className="absolute bottom-[20px] left-[-40px] w-[160px] h-[160px] rounded-full" style={{background:'radial-gradient(circle,rgba(255,194,32,.1) 0%,transparent 55%)'}}></div>
           <div className="absolute top-8 right-6" style={{animation:'float 5s ease-in-out infinite',opacity:.06}}><Spark size={56} color="white"/></div>
-          <div className="relative z-10 px-5 pt-10 pb-6">
+          <div className="relative z-10 px-5 pt-12 pb-8">
             <div className="flex items-center pb-2"><Spark size={16}/><span className="ml-2 text-white/50 text-[11px] font-bold tracking-[.18em] uppercase">2026沃尔玛全球峰会</span><div className="flex-1"/></div>
-            <h1 className="text-white text-[28px] font-black leading-[1.05] tracking-tight mt-2">2026<br/>沃尔玛全球<br/>峰会</h1>
-            <div className="flex items-center gap-2.5 mt-3 mb-3">
+            <h1 className="text-white text-[30px] font-black leading-[1.05] tracking-tight mt-2">2026<br/>沃尔玛全球<br/>峰会</h1>
+            <div className="flex items-center gap-2.5 mt-4 mb-4">
               <span className="text-white/45 text-[13px]">9月16日 · 深圳</span>
               <div className="flex items-center gap-1.5 bg-[#FFC220]/15 rounded-full px-3 py-[3px] border border-[#FFC220]/20">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#FFC220]" style={{animation:'dotPulse 1.5s infinite'}}/>
@@ -125,7 +125,7 @@ const PageA1=({go})=>{
               </div>
             ))}
           </div>
-          <p className="text-[12px] text-wm-muted text-center mt-2 mb-1">
+          <p className="text-[12px] text-wm-muted text-center mt-2" style={{marginBottom:'20px'}}>
             选择身份后需要进行验证，请准备好相关资质材料
           </p>
         </div>
