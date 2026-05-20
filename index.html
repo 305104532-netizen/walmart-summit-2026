@@ -79,9 +79,8 @@ const PageA1=({go})=>{
     {id: 'service', title: '服务商', desc: '服务商/生态伙伴', icon: '🤝', color: '#F59E0B'},
   ];
   return(
-    <div className="min-h-screen flex flex-col bg-wm-bg">
-      <div className="flex-1">
-        <div className="relative" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)', minHeight: '0px'}}>
+    <div className="h-screen flex flex-col overflow-auto bg-wm-bg">
+      <div className="shrink-0 relative" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)'}}>
           <div className="absolute top-[-80px] right-[-50px] w-[260px] h-[260px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.25) 0%,transparent 55%)'}}></div>
           <div className="absolute bottom-[20px] left-[-40px] w-[160px] h-[160px] rounded-full" style={{background:'radial-gradient(circle,rgba(255,194,32,.1) 0%,transparent 55%)'}}></div>
           <div className="absolute top-8 right-6" style={{animation:'float 5s ease-in-out infinite',opacity:.06}}><Spark size={56} color="white"/></div>
@@ -98,7 +97,7 @@ const PageA1=({go})=>{
           </div>
           <div className="h-[28px] bg-wm-bg" style={{borderRadius:'22px 22px 0 0', marginTop: 0}}></div>
         </div>
-        <div className="bg-wm-bg px-5 flex flex-col flex-1" style={{paddingBottom: '0px'}}>
+        <div className="bg-wm-bg px-5 shrink-0" style={{paddingBottom: '0px'}}>
           <div className="space-y-4 s3">
             {roles.map((r, i) => (
               <div 
@@ -130,7 +129,6 @@ const PageA1=({go})=>{
             选择身份后需要进行验证，请准备好相关资质材料
           </p>
         </div>
-      </div>
     </div>
   );
 };
