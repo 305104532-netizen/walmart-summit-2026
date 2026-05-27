@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#001D3D">
-<title>2026沃尔玛全球峰会</title>
+<meta name="theme-color" content="#001E60">
+<title>WALMART CONNECT · 2026全球峰会</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script>tailwind.config={theme:{extend:{colors:{wm:{blue:'#0071DC',dark:'#004B99',deep:'#001D3D',bg:'#F5F6F8',card:'#FFF',title:'#111827',body:'#374151',muted:'#9CA3AF',gold:'#FFC220',ok:'#10B981',vip:'#8B5CF6',warn:'#F59E0B',live:'#EF4444'}},fontFamily:{sans:['Inter','PingFang SC','system-ui']}}}}</script>
+<script>tailwind.config={theme:{extend:{colors:{wm:{blue:'#0071DC',dark:'#002D72',deep:'#001E60',bg:'#F5F6F8',card:'#FFF',title:'#111827',body:'#374151',muted:'#9CA3AF',gold:'#FFC220',ok:'#10B981',vip:'#8B5CF6',warn:'#F59E0B',live:'#EF4444'}},fontFamily:{sans:['Inter','PingFang SC','system-ui']}}}}</script>
 <style>
 *{-webkit-font-smoothing:antialiased;box-sizing:border-box}body{font-family:'Inter','PingFang SC',system-ui;margin:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent}::-webkit-scrollbar{display:none}
 button:active{transform:scale(.97)!important;transition:transform .1s ease}
@@ -34,12 +34,12 @@ button:active{transform:scale(.97)!important;transition:transform .1s ease}
 <div id="root" class="w-full h-screen md:w-[375px] md:h-[812px] md:rounded-[32px] overflow-hidden relative" style="box-shadow:0 0 0 1px rgba(255,255,255,.06),0 25px 60px rgba(0,0,0,.4)"></div>
 <script type="text/babel">
 const{useState,useEffect}=React;
-const Spark=({size=20,color='#FFC220'})=><svg width={size} height={size} viewBox="0 0 32 32" fill={color}><path d="M16 2l2.4 9.6L28 14l-9.6 2.4L16 26l-2.4-9.6L4 14l9.6-2.4z"/></svg>;
+const Spark=({size=20,color='#FFC220'})=><svg width={size} height={size} viewBox="0 0 32 32" fill={color}><g transform="translate(16,16)"><ellipse cx="0" cy="-9" rx="2.4" ry="5.2"/><ellipse cx="0" cy="-9" rx="2.4" ry="5.2" transform="rotate(60)"/><ellipse cx="0" cy="-9" rx="2.4" ry="5.2" transform="rotate(120)"/><ellipse cx="0" cy="-9" rx="2.4" ry="5.2" transform="rotate(180)"/><ellipse cx="0" cy="-9" rx="2.4" ry="5.2" transform="rotate(240)"/><ellipse cx="0" cy="-9" rx="2.4" ry="5.2" transform="rotate(300)"/></g></svg>;
 
 /* ═══ SHARED COMPONENTS ═══ */
 const Hero=({children,h=200})=>{
   return(
-    <div className="relative shrink-0 flex flex-col" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)'}}>
+    <div className="relative shrink-0 flex flex-col" style={{background:'linear-gradient(170deg,#001E60 0%,#002D72 35%,#0071DC 80%,#3B8FE3 100%)'}}>
       <div className="absolute top-[-60px] right-[-40px] w-[220px] h-[220px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.22) 0%,transparent 55%)'}}/>
       <div className="absolute bottom-[60px] left-[-30px] w-[140px] h-[140px] rounded-full" style={{background:'radial-gradient(circle,rgba(255,194,32,.08) 0%,transparent 55%)'}}/>
       <div className="absolute top-8 right-5" style={{animation:'float 5s ease-in-out infinite',opacity:.07}}><Spark size={44} color="white"/></div>
@@ -79,47 +79,46 @@ const PageA1=({go})=>{
     {id: 'service', title: '服务商', desc: '服务商/生态伙伴', icon: '🤝', color: '#F59E0B'},
   ];
   return(
-    <div className="h-screen flex flex-col overflow-auto bg-wm-bg">
-      <div className="shrink-0 relative" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)'}}>
-          <div className="absolute top-[-80px] right-[-50px] w-[260px] h-[260px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.25) 0%,transparent 55%)'}}></div>
-          <div className="absolute bottom-[20px] left-[-40px] w-[160px] h-[160px] rounded-full" style={{background:'radial-gradient(circle,rgba(255,194,32,.1) 0%,transparent 55%)'}}></div>
-          <div className="absolute top-8 right-6" style={{animation:'float 5s ease-in-out infinite',opacity:.06}}><Spark size={56} color="white"/></div>
-          <div className="relative z-10 px-5 pt-12 pb-8">
-            <div className="flex items-center pb-2"><Spark size={16}/><span className="ml-2 text-white/50 text-[11px] font-bold tracking-[.18em] uppercase">2026沃尔玛全球峰会</span><div className="flex-1"/></div>
-            <h1 className="text-white text-[30px] font-black leading-[1.05] tracking-tight mt-2">2026<br/>沃尔玛全球<br/>峰会</h1>
+    <div className="h-screen flex flex-col overflow-auto relative" style={{background:'linear-gradient(170deg,#001E60 0%,#002D72 35%,#0071DC 80%,#3B8FE3 100%)'}}>
+      {/* Decorative elements */}
+      <div className="absolute top-[-80px] right-[-50px] w-[260px] h-[260px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.25) 0%,transparent 55%)'}}></div>
+      <div className="absolute bottom-[100px] left-[-40px] w-[200px] h-[200px] rounded-full" style={{background:'radial-gradient(circle,rgba(255,194,32,.08) 0%,transparent 55%)'}}></div>
+      <div className="absolute top-8 right-6" style={{animation:'float 5s ease-in-out infinite',opacity:.06}}><Spark size={56} color="white"/></div>
+      {/* Hero Content */}
+      <div className="relative z-10 px-5 pt-12 pb-6">
+            <div className="flex items-center pb-2"><Spark size={16}/><span className="ml-2 text-white/50 text-[11px] font-bold tracking-[.18em] uppercase">WALMART CONNECT · 2026全球峰会</span><div className="flex-1"/></div>
+            <h1 className="text-white text-[30px] font-black leading-[1.05] tracking-tight mt-2">2026沃尔玛<br/>全球峰会</h1>
             <div className="flex items-center gap-2.5 mt-4 mb-4">
               <span className="text-white/45 text-[13px]">9月16日 · 深圳</span>
               <div className="flex items-center gap-1.5 bg-[#FFC220]/15 rounded-full px-3 py-[3px] border border-[#FFC220]/20">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#FFC220]" style={{animation:'dotPulse 1.5s infinite'}}/>
                 <span className="text-[#FFC220] text-[11px] font-bold">报名中</span></div>
             </div>
-            <p className="text-white/40 text-[13px] pb-1">请选择您的身份进行验证</p>
-          </div>
-          <div className="h-[28px] bg-wm-bg" style={{borderRadius:'22px 22px 0 0', marginTop: 0}}></div>
-        </div>
-        <div className="bg-wm-bg px-5 shrink-0" style={{paddingBottom: '0px'}}>
-          <div className="space-y-4 s3">
+            <p className="text-white/40 text-[13px] pb-1">请选择您的身份进行验证后报名</p>
+      </div>
+      {/* Identity Cards - Frosted Glass */}
+      <div className="relative z-10 px-5 shrink-0" style={{paddingBottom: '0px'}}>
+          <div className="space-y-4">
             {roles.map((r, i) => (
               <div key={r.id}
                 onClick={() => { setRole(r.id); const target = r.id === 'seller' ? 'A2' : (r.id === 'employee' ? 'A4' : 'A3'); setTimeout(() => go(target), 200); }}
-                className={`bg-white rounded-[14px] p-5 cursor-pointer transition-all ${role === r.id ? 'ring-2 ring-wm-blue' : ''}`}
-                style={{boxShadow: '0 1px 3px rgba(0,0,0,.03)'}}
+                className={`rounded-[14px] p-6 cursor-pointer transition-all ${role === r.id ? 'ring-2 ring-[#FFC220]' : ''}`}
+                style={{background:'rgba(255,255,255,.12)',backdropFilter:'blur(20px)',WebkitBackdropFilter:'blur(20px)',border:'1px solid rgba(255,255,255,.15)'}}
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-[14px] flex items-center justify-center text-2xl" style={{background: r.color + '14'}}>{r.icon}</div>
+                <div className="flex items-center gap-5">
+                  <div className="w-14 h-14 rounded-[14px] flex items-center justify-center text-3xl" style={{background:'rgba(255,255,255,.15)'}}>{r.icon}</div>
                   <div className="flex-1">
-                    <p className="text-[16px] font-bold text-wm-title">{r.title}</p>
-                    <p className="text-[13px] text-wm-muted mt-0.5">{r.desc}</p>
+                    <p className="text-[17px] font-bold text-white">{r.title}</p>
+                    <p className="text-[13px] text-white/50 mt-1">{r.desc}</p>
                   </div>
-                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${role === r.id ? 'border-wm-blue bg-wm-blue' : 'border-gray-200'}`}>
-                    {role === r.id && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>}
+                  <div className={`w-7 h-7 rounded-full border-2 flex items-center justify-center ${role === r.id ? 'border-[#FFC220] bg-[#FFC220]' : 'border-white/30'}`}>
+                    {role === r.id && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>}
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          <p className="text-[12px] text-wm-muted text-center mt-2" style={{marginBottom:'20px'}}>选择身份后需要进行验证，请准备好相关资质材料</p>
-        </div>
+      </div>
     </div>
   );
 };
@@ -130,10 +129,10 @@ const PageA7=({go})=>{
   return(
     <div className="h-full flex flex-col">
       <div className="flex-1 overflow-auto">
-        <Hero h={180}><SubNav title="电子票券" go={()=>go('G1')}/></Hero>
+        <Hero h={180}><SubNav title="电子票券" go={()=>go('B1')}/></Hero>
         <div className="bg-wm-bg px-5 pb-8">
           {/* Ticket Card */}
-          <div className="bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-[14px] p-5 mt-4" style={{boxShadow:'0 8px 32px rgba(0,113,220,.25)'}}>
+          <div className="bg-gradient-to-br from-[#001E60] to-[#0071DC] rounded-[14px] p-5 mt-4" style={{boxShadow:'0 8px 32px rgba(0,113,220,.25)'}}>
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Spark size={20} color="#FFC220"/>
@@ -204,13 +203,13 @@ const PageA2=({go})=>{
   const toggleTopic = (i) => setSelTopics(s => s.includes(i) ? s.filter(x=>x!==i) : [...s, i]);
   const handleSubmit = () => { setStep('verifying'); setTimeout(() => { setStep('verified'); setTimeout(() => go('A6'), 800); }, 1500); };
   return(<div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
-  <div className="relative" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)'}}>
+  <div className="relative" style={{background:'linear-gradient(170deg,#001E60 0%,#002D72 35%,#0071DC 80%,#3B8FE3 100%)'}}>
     <div className="absolute top-[-60px] right-[-40px] w-[220px] h-[220px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.22) 0%,transparent 55%)'}}></div>
     <div className="absolute top-8 right-5" style={{animation:'float 5s ease-in-out infinite',opacity:.07}}><Spark size={44} color="white"/></div>
     <div className="relative z-10 px-4 pt-4 pb-2 flex items-center">
       <div className="w-9 h-9 flex items-center justify-center rounded-[14px] bg-white/10 cursor-pointer" onClick={()=>go('A1')}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg></div>
-      <span className="flex-1 text-center text-white text-[16px] font-bold">卖家验证 & 报名</span>
+      <span className="flex-1 text-center text-white text-[16px] font-bold">参会身份验证及报名</span>
       <div className="w-9"></div></div>
     <div className="h-4"></div>
     <div className="h-[24px] bg-wm-bg" style={{borderRadius:'22px 22px 0 0',marginTop:0}}></div>
@@ -220,7 +219,6 @@ const PageA2=({go})=>{
       <p className="text-[14px] font-bold text-wm-title mb-3">🏪 卖家身份验证</p>
       <Inp label="Seller ID" ph="请输入您的 Seller ID"/>
       <Inp label="店铺名称" ph="请输入店铺名称"/>
-      <Inp label="联系人手机号" ph="请输入手机号"/>
     </Card>
     <Card className="p-5 mb-4">
       <p className="text-[14px] font-bold text-wm-title mb-3">📋 报名信息</p>
@@ -244,14 +242,14 @@ const PageA3=({go})=>{
   const toggleTopic = (i) => setSelTopics(s => s.includes(i) ? s.filter(x=>x!==i) : [...s, i]);
   const handleSubmit = () => { setStep('verifying'); setTimeout(() => { setStep('verified'); setTimeout(() => go('A6'), 800); }, 1500); };
   return(<div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
-  <div className="relative" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)'}}>
+  <div className="relative" style={{background:'linear-gradient(170deg,#001E60 0%,#002D72 35%,#0071DC 80%,#3B8FE3 100%)'}}>
     <div className="absolute top-[-60px] right-[-40px] w-[220px] h-[220px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.22) 0%,transparent 55%)'}}></div>
     <div className="absolute top-8 right-5" style={{animation:'float 5s ease-in-out infinite',opacity:.07}}><Spark size={44} color="white"/></div>
     <div className="relative z-10 px-4 pt-4 pb-2 flex items-center">
       <div className="w-9 h-9 flex items-center justify-center rounded-[14px] bg-white/10 cursor-pointer" onClick={()=>go('A1')}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
       </div>
-      <span className="flex-1 text-center text-white text-[16px] font-bold">白名单验证 & 报名</span>
+      <span className="flex-1 text-center text-white text-[16px] font-bold">参会身份验证及报名</span>
       <div className="w-9"></div>
     </div>
     <div className="h-4"></div>
@@ -288,13 +286,13 @@ const PageA4=({go})=>{
   const toggleTopic = (i) => setSelTopics(s => s.includes(i) ? s.filter(x=>x!==i) : [...s, i]);
   const handleSubmit = () => { setStep('verifying'); setTimeout(() => { setStep('verified'); setTimeout(() => go('A6'), 800); }, 1500); };
   return(<div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
-  <div className="relative" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)'}}>
+  <div className="relative" style={{background:'linear-gradient(170deg,#001E60 0%,#002D72 35%,#0071DC 80%,#3B8FE3 100%)'}}>
     <div className="absolute top-[-60px] right-[-40px] w-[220px] h-[220px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.22) 0%,transparent 55%)'}}></div>
     <div className="absolute top-8 right-5" style={{animation:'float 5s ease-in-out infinite',opacity:.07}}><Spark size={44} color="white"/></div>
     <div className="relative z-10 px-4 pt-4 pb-2 flex items-center">
       <div className="w-9 h-9 flex items-center justify-center rounded-[14px] bg-white/10 cursor-pointer" onClick={()=>go('A1')}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg></div>
-      <span className="flex-1 text-center text-white text-[16px] font-bold">员工验证 & 报名</span>
+      <span className="flex-1 text-center text-white text-[16px] font-bold">参会身份验证及报名</span>
       <div className="w-9"></div></div>
     <div className="h-4"></div>
     <div className="h-[24px] bg-wm-bg" style={{borderRadius:'22px 22px 0 0',marginTop:0}}></div>
@@ -321,7 +319,7 @@ const PageA4=({go})=>{
 
 /* ═══ A5: REGISTER FORM ═══ */
 const PageA5=({go})=>(<div className="h-full flex flex-col"><div className="flex-1 overflow-auto">
-  <div className="relative" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)'}}>
+  <div className="relative" style={{background:'linear-gradient(170deg,#001E60 0%,#002D72 35%,#0071DC 80%,#3B8FE3 100%)'}}>
     <div className="absolute top-[-60px] right-[-40px] w-[220px] h-[220px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.22) 0%,transparent 55%)'}}></div>
     <div className="absolute top-8 right-5" style={{animation:'float 5s ease-in-out infinite',opacity:.07}}><Spark size={44} color="white"/></div>
     <div className="relative z-10 px-4 pt-4 pb-2 flex items-center">
@@ -349,15 +347,15 @@ const PageA6=({go})=>(<div className="h-full flex flex-col"><div className="flex
   <Hero h={260}>
     <div className="relative z-10 flex flex-col items-center pt-10 pb-4">
       <div className="w-20 h-20 rounded-full bg-wm-ok/20 flex items-center justify-center s1"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-      <p className="text-white text-[24px] font-black mt-4 s2">报名成功！</p>
-      <p className="text-white/40 text-[14px] mt-2 s2">您已获得参会资格</p>
+      <p className="text-white text-[24px] font-black mt-4 s2 text-center">报名成功！</p>
+      <p className="text-white/50 text-[14px] mt-2 s2 text-center">待工作人员审核后，方可开启峰会之旅</p>
     </div>
   </Hero>
   <div className="bg-wm-bg px-5 pb-8">
     <Card className="p-5 s3">
       {[{l:'姓名',v:'张三'},{l:'身份',v:'卖家'},{l:'票券编号',v:'WC2026-00128'}].map((r,i)=>(<div key={i} className="flex items-center justify-between py-2.5" style={i<2?{borderBottom:'1px solid #F5F5F7'}:{}}><span className="text-[13px] text-wm-muted">{r.l}</span><span className="text-[13px] font-semibold text-wm-title">{r.v}</span></div>))}
     </Card>
-    <div className="mt-4 flex gap-4 s4"><div className="flex-1"><Btn onClick={()=>go('B1')}>进入首页</Btn></div><div className="flex-1"><Btn outline onClick={()=>go('D4')}>邀请好友</Btn></div></div>
+    <div className="mt-4 flex gap-4 s4"><div className="flex-1"><Btn onClick={()=>go('B1')}>开启峰会之旅</Btn></div><div className="flex-1"><Btn outline onClick={()=>go('D4')}>邀请好友</Btn></div></div>
   </div>
 </div></div>);
 
@@ -370,27 +368,27 @@ const PageB1=({go})=>{
     {l:'邀约',d:'M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316',g:'from-[#8B5CF6] to-[#7C3AED]',to:'D1'},
   ];
   const agenda=[
-    {time:'09:00',title:'开幕致辞 — CEO 主题演讲',tag:'主会场',tagC:'#0071DC',now:true},
-    {time:'10:00',title:'2026 全球市场战略发布',tag:'主会场',tagC:'#0071DC'},
-    {time:'10:00',title:'广告智能升级 · AI 驱动精准投放',tag:'分会场A',tagC:'#8B5CF6'},
-    {time:'11:00',title:'卖家增长论坛：从 0 到 1 的方法论',tag:'主会场',tagC:'#0071DC',isRound:true},
-    {time:'13:30',title:'品牌增长 · 全域营销新范式',tag:'分会场A',tagC:'#8B5CF6'},
-    {time:'13:30',title:'广告主私享会 · ROI 优化实战',tag:'分会场B',tagC:'#10B981'},
-    {time:'15:00',title:'生态合作路演 · 服务商对接',tag:'分会场C',tagC:'#F59E0B'},
-    {time:'16:30',title:'互动抽奖与闭幕式',tag:'主会场',tagC:'#0071DC',spec:true},
+    {time:'09:00',title:'开幕致辞 — CEO 主题演讲',tag:'主会场',tagC:'#0071DC',topic:'全球战略',now:true},
+    {time:'10:00',title:'2026 全球市场战略发布',tag:'主会场',tagC:'#0071DC',topic:'全球战略'},
+    {time:'10:00',title:'广告智能升级 · AI 驱动精准投放',tag:'分会场A',tagC:'#8B5CF6',topic:'广告智能'},
+    {time:'11:00',title:'卖家增长论坛：从 0 到 1 的方法论',tag:'主会场',tagC:'#0071DC',topic:'卖家成长',isRound:true},
+    {time:'13:30',title:'品牌增长 · 全域营销新范式',tag:'分会场A',tagC:'#8B5CF6',topic:'品牌增长'},
+    {time:'13:30',title:'广告主私享会 · ROI 优化实战',tag:'分会场B',tagC:'#10B981',topic:'广告智能'},
+    {time:'15:00',title:'生态合作路演 · 服务商对接',tag:'分会场C',tagC:'#F59E0B',topic:'生态合作'},
+    {time:'16:30',title:'互动抽奖与闭幕式',tag:'主会场',tagC:'#0071DC',topic:'直播电商',spec:true},
   ];
   return(
     <div className="h-full flex flex-col relative">
       <div className="flex-1 overflow-auto">
-        <div className="relative pb-[28px]" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)'}}>
+        <div className="relative pb-[28px]" style={{background:'linear-gradient(170deg,#001E60 0%,#002D72 35%,#0071DC 80%,#3B8FE3 100%)'}}>
           <div className="absolute top-[-80px] right-[-50px] w-[260px] h-[260px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.25) 0%,transparent 55%)'}}/>
           <div className="absolute bottom-[20px] left-[-40px] w-[160px] h-[160px] rounded-full" style={{background:'radial-gradient(circle,rgba(255,194,32,.1) 0%,transparent 55%)'}}/>
           <div className="absolute top-8 right-6" style={{animation:'float 5s ease-in-out infinite',opacity:.06}}><Spark size={56} color="white"/></div>
           <div className="relative z-10 px-5 pt-4">
-            <div className="flex items-center pb-2"><Spark size={18}/><span className="ml-2 text-white/50 text-[11px] font-bold tracking-[.18em] uppercase">2026沃尔玛全球峰会</span><div className="flex-1"/>
+            <div className="flex items-center pb-2"><Spark size={18}/><span className="ml-2 text-white/50 text-[11px] font-bold tracking-[.18em] uppercase">WALMART CONNECT · 2026全球峰会</span><div className="flex-1"/>
               <div className="relative w-9 h-9 flex items-center justify-center rounded-[14px] bg-white/10"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.65)" strokeWidth="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
                 <div className="absolute top-1.5 right-1.5 w-2 h-2 bg-wm-live rounded-full" style={{animation:'dotPulse 2s infinite'}}/></div></div>
-            <h1 className="text-white text-[32px] font-black leading-[1.05] tracking-tight mt-3">2026<br/>沃尔玛全球<br/>峰会</h1>
+            <h1 className="text-white text-[32px] font-black leading-[1.05] tracking-tight mt-3">2026沃尔玛<br/>全球峰会</h1>
             <div className="flex items-center gap-2.5 mt-3 mb-4">
               <span className="text-white/45 text-[14px]">9月16日 · 深圳</span>
               <div className="flex items-center gap-1.5 bg-[#FFC220]/15 rounded-full px-3 py-[4px] border border-[#FFC220]/20">
@@ -406,15 +404,41 @@ const PageB1=({go})=>{
           <div className="absolute left-0 right-0 bottom-0 h-[28px] bg-wm-bg" style={{borderRadius:'22px 22px 0 0'}}/>
         </div>
 
-        {/* LIVE */}
+        {/* LIVE CAROUSEL */}
         <div className="bg-wm-bg px-4 pb-4">
-          <div className="bg-white rounded-[14px] px-4 py-3 flex gap-4 cursor-pointer s2" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
-            <div className="w-[88px] h-[56px] rounded-[14px] overflow-hidden relative shrink-0" style={{background:'linear-gradient(135deg,#001D3D,#0071DC)'}}>
-              <div className="absolute inset-0 flex items-center justify-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="white" opacity=".5"><path d="M8 5v14l11-7z"/></svg></div>
-              <div className="absolute top-1.5 left-1.5 flex items-center gap-1 bg-wm-live/90 text-white text-[9px] font-bold px-1.5 py-[2px] rounded"><div className="w-1 h-1 bg-white rounded-full" style={{animation:'dotPulse 1.5s infinite'}}/></div>
-            </div>
-            <div className="flex-1 min-w-0 py-0.5"><p className="text-[14px] font-bold text-wm-title">主会场开幕式</p><p className="text-[12px] text-wm-muted mt-1">09:00 — 12:00 · 1.2万人观看</p></div>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" strokeWidth="2" className="self-center"><path d="M9 18l6-6-6-6"/></svg>
+          <div className="flex items-center justify-between mb-3"><p className="text-[17px] font-bold text-wm-title">正在直播</p><span className="text-[13px] text-wm-blue font-semibold cursor-pointer" onClick={()=>go('H1')}>全部直播</span></div>
+          {(() => {
+            const liveItems=[
+              {title:'主会场开幕式',sub:'CEO 主题演讲 · 全球战略发布',v:'1.2万',vn:'主会场'},
+              {title:'广告智能升级',sub:'AI 驱动精准投放',v:'0.3万',vn:'分会场A'},
+              {title:'卖家增长论坛',sub:'从 0 到 1 的方法论',v:'0.5万',vn:'主会场'},
+            ];
+            return(<div className="rounded-[14px] overflow-hidden cursor-pointer relative" style={{height:160,background:'linear-gradient(135deg,#001E60,#0053A0,#0071DC)'}} onClick={()=>go('H2')}>
+              <div className="absolute inset-0 flex items-center justify-center opacity-10"><svg width="64" height="64" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+              <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-wm-live/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg z-10"><div className="w-1.5 h-1.5 bg-white rounded-full" style={{animation:'dotPulse 1.5s infinite'}}/>LIVE</div>
+              <div className="absolute top-3 right-3 flex items-center gap-1 bg-black/30 text-white text-[11px] font-medium px-2 py-1 rounded z-10">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="white" opacity=".7"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z"/><circle cx="12" cy="12" r="3.5" fill="white"/></svg>
+                {liveItems[0].v}
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-4 z-10" style={{background:'linear-gradient(transparent,rgba(0,0,0,.6)'}}>
+                <span className="text-[10px] font-bold text-white/70 bg-white/15 px-2 py-[2px] rounded">{liveItems[0].vn}</span>
+                <p className="text-white text-[18px] font-black mt-1.5">{liveItems[0].title}</p>
+                <p className="text-white/60 text-[12px] mt-0.5">{liveItems[0].sub}</p>
+              </div>
+            </div>);
+          })()}
+          {/* More live thumbnails */}
+          <div className="flex gap-3 mt-3">
+            {[{t:'广告智能升级',vn:'分会场A',v:'0.3万'},{t:'卖家增长论坛',vn:'主会场',v:'0.5万'}].map((l,i)=>(
+              <div key={i} className="flex-1 rounded-[14px] overflow-hidden cursor-pointer relative" style={{height:90,background:'linear-gradient(135deg,#001E60,#0071DC)'}} onClick={()=>go('H2')}>
+                <div className="absolute inset-0 flex items-center justify-center opacity-15"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+                <div className="absolute top-2 left-2 flex items-center gap-1 bg-wm-live/90 text-white text-[8px] font-bold px-1.5 py-[2px] rounded"><div className="w-1 h-1 bg-white rounded-full" style={{animation:'dotPulse 1.5s infinite'}}/>LIVE</div>
+                <div className="absolute bottom-0 left-0 right-0 p-2.5" style={{background:'linear-gradient(transparent,rgba(0,0,0,.6)'}}>
+                  <p className="text-white text-[12px] font-bold leading-tight">{l.t}</p>
+                  <p className="text-white/50 text-[10px] mt-0.5">{l.vn} · {l.v}人</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -428,7 +452,7 @@ const PageB1=({go})=>{
                 <div className="flex flex-col items-center pt-1.5 shrink-0"><div className={`w-2 h-2 rounded-full ${a.now?'bg-wm-blue':'bg-gray-200'}`} style={a.now?{boxShadow:'0 0 0 3px rgba(0,113,220,.12)'}:{}}/>{i<x.length-1&&<div className="w-px h-7 bg-gray-100 mt-1"/>}</div>
                 <div className="flex-1 min-w-0">
                   <p className="text-[14px] font-semibold text-wm-title leading-snug">{a.title}</p>
-                  <div className="flex items-center gap-2 mt-1.5"><span className="text-[10px] font-bold px-2 py-[1px] rounded" style={{background:a.tagC+'10',color:a.tagC}}>{a.tag}</span>{a.now&&<span className="flex items-center gap-1 text-[10px] font-bold text-wm-live"><div className="w-1 h-1 bg-wm-live rounded-full"/>直播中</span>}{a.isRound&&<span className="text-[10px] text-wm-muted">圆桌访谈</span>}{a.spec&&<span className="text-[10px] font-bold text-wm-warn bg-amber-50 px-2 py-[1px] rounded">特别活动</span>}</div>
+                  <div className="flex items-center gap-2 mt-1.5"><span className="text-[10px] font-bold px-2 py-[1px] rounded" style={{background:a.tagC+'10',color:a.tagC}}>{a.tag}</span>{a.topic&&<span className="text-[10px] font-medium px-2 py-[1px] rounded bg-[#F0F9FF] text-[#0071DC]">{a.topic}</span>}{a.now&&<span className="flex items-center gap-1 text-[10px] font-bold text-wm-live"><div className="w-1 h-1 bg-wm-live rounded-full"/>直播中</span>}{a.isRound&&<span className="text-[10px] text-wm-muted">圆桌访谈</span>}{a.spec&&<span className="text-[10px] font-bold text-wm-warn bg-amber-50 px-2 py-[1px] rounded">特别活动</span>}</div>
                 </div>
               </div>
             ))}
@@ -468,7 +492,7 @@ const PageB2=({go})=>(
     <Hero h={240}>
       <SubNav title="关于峰会" go={()=>go('B1')}/>
       <div className="relative z-10 px-5 pt-4 pb-2 s1">
-        <h1 className="text-white text-[28px] font-black leading-tight">2026沃尔玛全球峰会</h1>
+        <h1 className="text-white text-[28px] font-black leading-tight">WALMART CONNECT · 2026全球峰会</h1>
         <p className="text-white/40 text-[14px] mt-2">Walmart Connect 2026 · 深圳</p>
       </div>
       <div className="relative z-10 px-5 s2">
@@ -508,14 +532,14 @@ const PageB3=({go})=>{
     {name:'会后',date:'9月18日起',desc:'资料回看 · 精彩回顾',active:false},
   ];
   const ss=[
-    {time:'09:00',dur:'60min',title:'开幕致辞 — CEO 主题演讲',venue:'主会场',c:'#0071DC',live:true,phase:1},
-    {time:'10:00',dur:'60min',title:'2026 全球市场战略发布',venue:'主会场',c:'#0071DC',phase:1},
-    {time:'10:00',dur:'60min',title:'广告智能升级 · AI 驱动精准投放',venue:'分会场A',c:'#8B5CF6',phase:1},
-    {time:'11:00',dur:'90min',title:'卖家增长论坛：从 0 到 1 的方法论',venue:'主会场',c:'#0071DC',tag:'圆桌',phase:1},
-    {time:'13:30',dur:'90min',title:'品牌增长 · 全域营销新范式',venue:'分会场A',c:'#8B5CF6',phase:1},
-    {time:'13:30',dur:'90min',title:'广告主私享会 · ROI 优化实战',venue:'分会场B',c:'#10B981',phase:1},
-    {time:'15:00',dur:'60min',title:'生态合作路演 · 服务商对接',venue:'分会场C',c:'#F59E0B',phase:1},
-    {time:'16:30',dur:'60min',title:'互动抽奖与闭幕式',venue:'主会场',c:'#0071DC',highlight:true,phase:1},
+    {time:'09:00',dur:'60min',title:'开幕致辞 — CEO 主题演讲',venue:'主会场',c:'#0071DC',live:true,phase:1,topic:'全球战略'},
+    {time:'10:00',dur:'60min',title:'2026 全球市场战略发布',venue:'主会场',c:'#0071DC',phase:1,topic:'全球战略'},
+    {time:'10:00',dur:'60min',title:'广告智能升级 · AI 驱动精准投放',venue:'分会场A',c:'#8B5CF6',phase:1,topic:'广告智能'},
+    {time:'11:00',dur:'90min',title:'卖家增长论坛：从 0 到 1 的方法论',venue:'主会场',c:'#0071DC',tag:'圆桌',phase:1,topic:'卖家成长'},
+    {time:'13:30',dur:'90min',title:'品牌增长 · 全域营销新范式',venue:'分会场A',c:'#8B5CF6',phase:1,topic:'品牌增长'},
+    {time:'13:30',dur:'90min',title:'广告主私享会 · ROI 优化实战',venue:'分会场B',c:'#10B981',phase:1,topic:'广告智能'},
+    {time:'15:00',dur:'60min',title:'生态合作路演 · 服务商对接',venue:'分会场C',c:'#F59E0B',phase:1,topic:'生态合作'},
+    {time:'16:30',dur:'60min',title:'互动抽奖与闭幕式',venue:'主会场',c:'#0071DC',highlight:true,phase:1,topic:'直播电商'},
     // 会前阶段
     {time:'全天',dur:'',title:'峰会资料包下载',venue:'线上',c:'#9CA3AF',phase:0},
     {time:'20:00',dur:'60min',title:'预热直播：嘉宾阵容揭秘',venue:'线上',c:'#9CA3AF',phase:0},
@@ -552,7 +576,7 @@ const PageB3=({go})=>{
         ):fl.map((s,i,r)=><div key={i} className="flex gap-4 mb-1">
           <div className="w-[48px] shrink-0 pt-3.5"><span className={`text-[13px] font-bold ${s.live?'text-wm-blue':'text-wm-title'}`}>{s.time}</span></div>
           <div className="bg-white flex-1 rounded-[14px] p-4 mb-2 cursor-pointer hover:shadow-md transition-shadow" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)',borderLeft:`3px solid ${s.c}`}}>
-            <div className="flex items-center gap-2 mb-1.5"><span className="text-[10px] font-bold px-2 py-[2px] rounded" style={{background:s.c+'10',color:s.c}}>{s.venue}</span>{s.live&&<span className="flex items-center gap-1 text-[10px] font-bold text-wm-live bg-red-50 px-2 py-[2px] rounded"><div className="w-1 h-1 bg-wm-live rounded-full" style={{animation:'dotPulse 1.5s infinite'}}/>直播中</span>}{s.tag&&<span className="text-[10px] font-medium text-wm-muted bg-gray-50 px-2 py-[2px] rounded">{s.tag}</span>}</div>
+            <div className="flex items-center gap-2 mb-1.5"><span className="text-[10px] font-bold px-2 py-[2px] rounded" style={{background:s.c+'10',color:s.c}}>{s.venue}</span>{s.topic&&<span className="text-[10px] font-medium px-2 py-[2px] rounded bg-[#F0F9FF] text-[#0071DC]">{s.topic}</span>}{s.live&&<span className="flex items-center gap-1 text-[10px] font-bold text-wm-live bg-red-50 px-2 py-[2px] rounded"><div className="w-1 h-1 bg-wm-live rounded-full" style={{animation:'dotPulse 1.5s infinite'}}/>直播中</span>}{s.tag&&<span className="text-[10px] font-medium text-wm-muted bg-gray-50 px-2 py-[2px] rounded">{s.tag}</span>}</div>
             <p className="text-[14px] font-semibold text-wm-title leading-snug">{s.title}</p>
           </div></div>)}
       </div>
@@ -750,11 +774,11 @@ const PageD4=({go})=>{
           {/* Simple Poster Preview */}
           <div className="bg-white rounded-[14px] p-5 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
             <p className="text-[15px] font-bold text-wm-title mb-4">生成专属邀约海报</p>
-            <div className="relative bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-[14px] p-4 aspect-[4/5] flex flex-col items-center justify-center">
+            <div className="relative bg-gradient-to-br from-[#001E60] to-[#0071DC] rounded-[14px] p-4 aspect-[4/5] flex flex-col items-center justify-center">
               <div className="absolute top-3 left-3"><Spark size={16} color="white"/></div>
               <div className="text-center">
                 <p className="text-white/60 text-[11px] tracking-wider mb-2">2026 WALMART GLOBAL SUMMIT</p>
-                <p className="text-white text-[20px] font-black leading-tight">2026<br/>沃尔玛全球<br/>峰会</p>
+                <p className="text-white text-[20px] font-black leading-tight">2026沃尔玛<br/>全球峰会</p>
                 <p className="text-white/50 text-[12px] mt-2">9月16日 · 深圳</p>
               </div>
               <div className="mt-4 bg-white rounded-lg p-2">
@@ -801,17 +825,17 @@ const PageD4=({go})=>{
 const PageD1=({go})=>{
   const [activeTab, setActiveTab] = useState('records');
   const invites = [
-    {n:'李明',s:'已确认参会',c:'#10B981',t:'2026-08-20',avatar:'李'},
-    {n:'王芳',s:'待确认',c:'#F59E0B',t:'2026-08-19',avatar:'王'},
-    {n:'赵强',s:'已确认参会',c:'#10B981',t:'2026-08-18',avatar:'赵'},
-    {n:'刘洋',s:'未查看',c:'#9CA3AF',t:'2026-08-17',avatar:'刘'},
+    {n:'李明',s:'审核通过',c:'#10B981',t:'2026-08-20',avatar:'李'},
+    {n:'王芳',s:'待审核',c:'#F59E0B',t:'2026-08-19',avatar:'王'},
+    {n:'赵强',s:'已报名',c:'#0071DC',t:'2026-08-18',avatar:'赵'},
+    {n:'刘洋',s:'未报名',c:'#9CA3AF',t:'2026-08-17',avatar:'刘'},
   ];
   const stats = {total:12,confirmed:8,pending:2,unviewed:2};
   
   return(
     <div className="h-full flex flex-col">
       <div className="flex-1 overflow-auto">
-        <Hero h={160}>
+        <Hero h={200}>
           <SubNav title="邀约管理" go={()=>go('B1')}/>
           <div className="relative z-10 px-5 pt-2">
             <div className="flex items-center justify-between">
@@ -821,11 +845,11 @@ const PageD1=({go})=>{
               </div>
               <div className="text-right">
                 <p className="text-[#FFC220] text-[28px] font-black">{stats.confirmed}</p>
-                <p className="text-white/50 text-[13px]">已确认</p>
+                <p className="text-white/50 text-[13px]">审核通过</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 mt-3">
-              <span className="text-white/60 text-[12px]">待确认: {stats.pending}</span>
+            <div className="flex items-center gap-5 mt-3">
+              <span className="text-white/60 text-[12px]">待审核: {stats.pending}</span>
               <span className="text-white/60 text-[12px]">未查看: {stats.unviewed}</span>
             </div>
           </div>
@@ -877,11 +901,11 @@ const PageD1=({go})=>{
               {/* Poster Preview */}
               <div className="bg-white rounded-[14px] p-4 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
                 <p className="text-[15px] font-bold text-wm-title mb-3">我的邀约海报</p>
-                <div className="relative bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-[14px] p-4 aspect-[4/5] flex flex-col items-center justify-center">
+                <div className="relative bg-gradient-to-br from-[#001E60] to-[#0071DC] rounded-[14px] p-4 aspect-[4/5] flex flex-col items-center justify-center">
                   <div className="absolute top-3 left-3"><Spark size={16} color="white"/></div>
                   <div className="text-center">
                     <p className="text-white/60 text-[11px] tracking-wider mb-2">2026 WALMART GLOBAL SUMMIT</p>
-                    <p className="text-white text-[20px] font-black leading-tight">2026<br/>沃尔玛全球<br/>峰会</p>
+                    <p className="text-white text-[20px] font-black leading-tight">2026沃尔玛<br/>全球峰会</p>
                     <p className="text-white/50 text-[12px] mt-2">9月16日 · 深圳</p>
                   </div>
                   <div className="mt-4 bg-white rounded-lg p-2">
@@ -942,7 +966,7 @@ const PageD2=({go})=>{
         <Hero h={160}><SubNav title="邀约好友" go={()=>go('D1')}/></Hero>
         <div className="bg-wm-bg px-5 pb-8">
           {/* Stats Card */}
-          <div className="bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-[14px] p-5 mt-4" style={{boxShadow:'0 8px 24px rgba(0,113,220,.2)'}}>
+          <div className="bg-gradient-to-br from-[#001E60] to-[#0071DC] rounded-[14px] p-5 mt-4" style={{boxShadow:'0 8px 24px rgba(0,113,220,.2)'}}>
             <div className="flex items-center gap-2">
               <Spark size={24} color="#FFC220"/>
               <span className="text-white/70 text-[13px]">邀好友 · 一起看峰会</span>
@@ -955,7 +979,7 @@ const PageD2=({go})=>{
               </div>
               <div className="text-center">
                 <p className="text-white text-[22px] font-bold">0</p>
-                <p className="text-white/50 text-[11px] mt-0.5">待确认</p>
+                <p className="text-white/50 text-[11px] mt-0.5">待审核</p>
               </div>
               <div className="text-center">
                 <p className="text-white text-[22px] font-bold">200</p>
@@ -967,7 +991,7 @@ const PageD2=({go})=>{
           {/* Poster Preview */}
           <div className="bg-white rounded-[14px] p-5 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
             <p className="text-[15px] font-bold text-wm-title mb-4">邀约海报预览</p>
-            <div className="relative bg-gradient-to-br from-[#001D3D] to-[#0071DC] rounded-[14px] p-4 aspect-[4/5] flex flex-col items-center justify-center">
+            <div className="relative bg-gradient-to-br from-[#001E60] to-[#0071DC] rounded-[14px] p-4 aspect-[4/5] flex flex-col items-center justify-center">
               <div className="absolute top-3 left-3"><Spark size={16} color="white"/></div>
               <div className="text-center">
                 <p className="text-white/60 text-[11px] tracking-wider mb-2">2026 WALMART GLOBAL SUMMIT</p>
@@ -1016,11 +1040,11 @@ const PageD3=({go})=>{
   return (
     <div className="h-full flex flex-col">
       <div className="flex-1 overflow-auto">
-        <Hero h={120}><SubNav title="生成海报" go={()=>go('D2')}/></Hero>
+        <Hero h={120}><SubNav title="生成海报" go={()=>go('A6')}/></Hero>
         <div className="bg-wm-bg px-5 pb-8">
           {/* Poster Card */}
           <div className="bg-white rounded-[14px] p-4 mt-4" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}}>
-            <div className="relative bg-gradient-to-br from-[#001D3D] via-[#003566] to-[#0071DC] rounded-[14px] overflow-hidden">
+            <div className="relative bg-gradient-to-br from-[#001E60] via-[#002D72] to-[#0071DC] rounded-[14px] overflow-hidden">
               {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-32 h-32 rounded-full" style={{background:'radial-gradient(circle,rgba(255,194,32,.15) 0%,transparent 60%)',transform:'translate(30%,-30%)'}}/>
               <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.2) 0%,transparent 60%)',transform:'translate(-30%,30%)'}}/>
@@ -1035,7 +1059,7 @@ const PageD3=({go})=>{
                 
                 {/* Title */}
                 <div className="mb-6">
-                  <p className="text-white text-[28px] font-black leading-tight">2026<br/>沃尔玛全球<br/>峰会</p>
+                  <p className="text-white text-[28px] font-black leading-tight">2026沃尔玛<br/>全球峰会</p>
                   <p className="text-white/50 text-[13px] mt-3">9月16日 · 深圳 · 与您相约</p>
                 </div>
                 
@@ -1162,7 +1186,7 @@ const PageF1=({go})=>{
   return(<div className="h-full flex flex-col relative">
     {phase==='won'&&confettis.map((c,i)=><div key={i} className="absolute z-[60] rounded-sm" style={{left:c.x,top:-10,width:c.size,height:c.size*1.5,background:c.color,animation:`confetti 2s ease-in ${c.delay}s both`}}/>)}
     <div className="flex-1 overflow-auto">
-      <div className="relative pb-[24px]" style={{minHeight:200,background:'linear-gradient(170deg,#001D3D 0%,#003566 40%,#0071DC 100%)'}}><div className="absolute top-[-40px] right-[-30px] w-[200px] h-[200px] rounded-full" style={{background:'radial-gradient(circle,rgba(255,194,32,.12) 0%,transparent 60%)'}}/>
+      <div className="relative pb-[24px]" style={{minHeight:200,background:'linear-gradient(170deg,#001E60 0%,#002D72 40%,#0071DC 100%)'}}><div className="absolute top-[-40px] right-[-30px] w-[200px] h-[200px] rounded-full" style={{background:'radial-gradient(circle,rgba(255,194,32,.12) 0%,transparent 60%)'}}/>
         <div className="relative z-10 px-5 pt-4 pb-2 flex items-center"><div className="w-9 h-9 flex items-center justify-center rounded-[14px] bg-white/10 cursor-pointer" onClick={()=>go(-1)}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg></div><span className="flex-1 text-center text-white text-[16px] font-bold">盲盒抽奖</span><div className="w-9"/></div>
         <div className="relative z-10 px-5 pt-2 pb-5 s1"><div className="flex items-center gap-4 bg-white/[.08] backdrop-blur-sm rounded-[14px] px-4 py-3 border border-white/[.06]"><Spark/><div><p className="text-white text-[14px] font-bold">{phase==='won'?'恭喜中奖！':'您有 1 次抽奖机会'}</p><p className="text-white/40 text-[12px] mt-0.5">{phase==='won'?'请在峰会当天领取':'集齐 8 个展位打卡解锁'}</p></div></div></div>
         <div className="absolute left-0 right-0 bottom-0 h-[24px] bg-wm-bg" style={{borderRadius:'20px 20px 0 0'}}/>
@@ -1223,10 +1247,10 @@ const PageG1=({go})=>{
   ];
   return(<div className="h-full flex flex-col relative">
     <div className="flex-1 overflow-auto">
-      <div className="relative pb-[28px]" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)'}}>
+      <div className="relative pb-[28px]" style={{background:'linear-gradient(170deg,#001E60 0%,#002D72 35%,#0071DC 80%,#3B8FE3 100%)'}}>
         <div className="absolute top-[-60px] right-[-40px] w-[220px] h-[220px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.25) 0%,transparent 55%)'}}/>
         <div className="absolute top-8 right-5" style={{animation:'float 5s ease-in-out infinite',opacity:.06}}><Spark size={44} color="white"/></div>
-        <div className="relative z-10 px-5 pt-4 pb-2"><Spark size={16}/><span className="ml-2 text-white/50 text-[11px] font-bold tracking-[.15em] uppercase">2026沃尔玛全球峰会</span>
+        <div className="relative z-10 px-5 pt-4 pb-2"><Spark size={16}/><span className="ml-2 text-white/50 text-[11px] font-bold tracking-[.15em] uppercase">WALMART CONNECT · 2026全球峰会</span>
           <div className="relative z-10 px-5 pt-3 s1"><div className="flex items-center gap-4">
             <div className="w-[64px] h-[64px] rounded-[14px] border-[2.5px] border-white/20 bg-white/10 backdrop-blur-sm flex items-center justify-center" style={{boxShadow:'0 6px 20px rgba(0,0,0,.2)'}}><span className="text-white text-[24px] font-bold">张</span></div>
             <div><p className="text-white text-[20px] font-bold tracking-tight">张三</p><p className="text-white/40 text-[13px] mt-0.5">沃尔玛官方旗舰店</p><div className="flex items-center gap-1.5 mt-1.5"><span className="bg-white/12 text-white/80 text-[10px] font-bold px-2 py-[2px] rounded-full border border-white/8">卖家</span><span className="bg-[#FFC220]/18 text-[#FFC220] text-[10px] font-bold px-2 py-[2px] rounded-full border border-[#FFC220]/20">VIP</span></div></div></div>
@@ -1278,33 +1302,63 @@ const PageG3=({go})=>(
 
 /* ═══ H1: LIVE LIST ═══ */
 const PageH1=({go})=>{
+  const [bannerIdx, setBannerIdx] = useState(0);
+  const banners=[
+    {title:'主会场开幕式',sub:'CEO 主题演讲 · 全球战略发布',v:'0.8万在线',live:true},
+    {title:'广告智能升级',sub:'AI 驱动精准投放 · 分会场A',v:'即将开始',live:false},
+    {title:'互动抽奖与闭幕式',sub:'特别活动 · 万元大奖',v:'16:30 开始',live:false},
+  ];
+  useEffect(()=>{const t=setInterval(()=>setBannerIdx(i=>(i+1)%banners.length),3000);return()=>clearInterval(t);},[]);
   const lives=[
-    {title:'主会场开幕式',vn:'主会场',time:'09:00-12:00',v:'0.8万在线',live:true},
-    {title:'卖家增长论坛',vn:'主会场',time:'11:00-12:30',live:false},
-    {title:'广告智能升级',vn:'分会场A',time:'10:00-11:30',live:false},
-    {title:'品牌增长新范式',vn:'分会场A',time:'13:30-15:00',live:false},
-    {title:'广告主私享会',vn:'分会场B',time:'13:30-15:00',live:false},
-    {title:'互动抽奖与闭幕式',vn:'主会场',time:'16:30-17:30',live:false},
+    {title:'主会场开幕式',vn:'主会场',time:'09:00-12:00',v:'0.8万在线',live:true,topic:'全球战略'},
+    {title:'卖家增长论坛',vn:'主会场',time:'11:00-12:30',live:false,topic:'卖家成长'},
+    {title:'广告智能升级',vn:'分会场A',time:'10:00-11:30',live:false,topic:'广告智能'},
+    {title:'品牌增长新范式',vn:'分会场A',time:'13:30-15:00',live:false,topic:'品牌增长'},
+    {title:'广告主私享会',vn:'分会场B',time:'13:30-15:00',live:false,topic:'广告智能'},
+    {title:'互动抽奖与闭幕式',vn:'主会场',time:'16:30-17:30',live:false,topic:'直播电商'},
   ];
   return(
     <div className="h-full flex flex-col relative">
-      <div className="relative shrink-0 pb-[24px]" style={{minHeight:100,background:'linear-gradient(170deg,#001D3D 0%,#003566 40%,#0071DC 100%)'}}>
+      <div className="relative shrink-0 pb-[24px]" style={{minHeight:100,background:'linear-gradient(170deg,#001E60 0%,#002D72 40%,#0071DC 100%)'}}>
         <div className="relative z-10 px-5 pt-4 pb-2 flex items-center">
           <span className="flex-1 text-white text-[18px] font-bold">直播</span>
         </div>
         <div className="absolute left-0 right-0 bottom-0 h-[24px] bg-wm-bg" style={{borderRadius:'20px 20px 0 0'}}/>
       </div>
       <div className="flex-1 overflow-auto bg-wm-bg px-4 pb-[80px]">
-        {lives.map((l,i)=>(
-          <div key={i} className="bg-white rounded-[14px] px-4 py-3.5 flex gap-4 cursor-pointer mt-3" style={{boxShadow:'0 1px 3px rgba(0,0,0,.03)'}} onClick={()=>go('H2')}>
-            <div className="w-[80px] h-[50px] rounded-[14px] overflow-hidden relative shrink-0" style={{background:l.live?'linear-gradient(135deg,#001D3D,#0071DC)':'linear-gradient(135deg,#374151,#1F2937)'}}>
-              <div className="absolute inset-0 flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="white" opacity=".5"><path d="M8 5v14l11-7z"/></svg></div>
-              {l.live&&<div className="absolute top-1.5 left-1.5 flex items-center gap-1 bg-wm-live/90 text-white text-[8px] font-bold px-1.5 py-[1px] rounded"><div className="w-1 h-1 bg-white rounded-full"/>LIVE</div>}
+        {/* Auto-rotating Banner */}
+        <div className="rounded-[14px] overflow-hidden cursor-pointer relative" style={{height:140,background:'linear-gradient(135deg,#001E60,#0053A0,#0071DC)'}} onClick={()=>go('H2')}>
+          <div className="absolute inset-0 flex items-center justify-center opacity-10"><svg width="80" height="80" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+          {banners[bannerIdx].live&&<div className="absolute top-3 left-3 flex items-center gap-1.5 bg-wm-live/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg z-10"><div className="w-1.5 h-1.5 bg-white rounded-full" style={{animation:'dotPulse 1.5s infinite'}}/>LIVE</div>}
+          <div className="absolute bottom-0 left-0 right-0 p-4 z-10" style={{background:'linear-gradient(transparent,rgba(0,0,0,.5)'}}>
+            <p className="text-white text-[18px] font-black">{banners[bannerIdx].title}</p>
+            <p className="text-white/60 text-[12px] mt-0.5">{banners[bannerIdx].sub}</p>
+            <div className="flex items-center gap-1.5 mt-1.5">
+              <span className="text-[#FFC220] text-[12px] font-bold">{banners[bannerIdx].v}</span>
             </div>
-            <div className="flex-1 min-w-0 py-0.5">
-              <p className="text-[14px] font-bold text-wm-title leading-snug">{l.title}</p>
-              <p className="text-[12px] text-wm-muted mt-0.5">{l.vn} · {l.time}</p>
-              {l.live&&<div className="flex items-center gap-1 mt-1"><div className="w-1.5 h-1.5 rounded-full bg-wm-live"/><span className="text-[12px] text-wm-live font-semibold">{l.v}</span></div>}
+          </div>
+          {/* Dots */}
+          <div className="absolute bottom-2 right-3 flex gap-1.5 z-10">{banners.map((_,i)=><div key={i} className="rounded-full" style={{width:i===bannerIdx?14:5,height:5,background:i===bannerIdx?'#FFC220':'rgba(255,255,255,.4)',transition:'all .3s'}}/>)}</div>
+        </div>
+
+        {/* Live List */}
+        <p className="text-[16px] font-bold text-wm-title mt-5 mb-3">全部直播</p>
+        {lives.map((l,i)=>(
+          <div key={i} className="bg-white rounded-[14px] overflow-hidden cursor-pointer mb-3" style={{boxShadow:'0 2px 8px rgba(0,0,0,.06)'}} onClick={()=>go('H2')}>
+            {/* Thumbnail */}
+            <div className="relative" style={{height:100,background:l.live?'linear-gradient(135deg,#001E60,#0071DC)':'linear-gradient(135deg,#374151,#1F2937)'}}>
+              <div className="absolute inset-0 flex items-center justify-center"><svg width="32" height="32" viewBox="0 0 24 24" fill="white" opacity=".3"><path d="M8 5v14l11-7z"/></svg></div>
+              {l.live&&<div className="absolute top-2.5 left-2.5 flex items-center gap-1 bg-wm-live/90 text-white text-[10px] font-bold px-2 py-[3px] rounded"><div className="w-1 h-1 bg-white rounded-full" style={{animation:'dotPulse 1.5s infinite'}}/>LIVE</div>}
+              {!l.live&&<div className="absolute top-2.5 right-2.5 text-white/50 text-[11px] font-medium bg-black/30 px-2 py-[2px] rounded">{l.time}</div>}
+            </div>
+            {/* Info */}
+            <div className="px-4 py-3.5">
+              <p className="text-[15px] font-bold text-wm-title">{l.title}</p>
+              <div className="flex items-center gap-2 mt-2">
+                <span className="text-[10px] font-bold px-2 py-[2px] rounded bg-[#0071DC]/10 text-[#0071DC]">{l.vn}</span>
+                {l.topic&&<span className="text-[10px] font-medium px-2 py-[2px] rounded bg-[#F0F9FF] text-[#0071DC]">{l.topic}</span>}
+              </div>
+              {l.live&&<div className="flex items-center gap-1.5 mt-2"><div className="w-1.5 h-1.5 rounded-full bg-wm-live"/><span className="text-[13px] text-wm-live font-semibold">{l.v}</span></div>}
             </div>
           </div>
         ))}
@@ -1317,7 +1371,7 @@ const PageH1=({go})=>{
 /* ═══ H2: LIVE ROOM ═══ */
 const PageH2=({go})=>(
   <div className="h-full flex flex-col relative">
-    <div className="shrink-0 relative" style={{minHeight:220,background:'linear-gradient(170deg,#001D3D 0%,#003566 40%,#0071DC 100%)'}}>
+    <div className="shrink-0 relative" style={{minHeight:220,background:'linear-gradient(170deg,#001E60 0%,#002D72 40%,#0071DC 100%)'}}>
       <div className="relative z-10 px-5 pt-4 pb-2 flex items-center">
         <div className="w-9 h-9 flex items-center justify-center rounded-[14px] bg-white/10 cursor-pointer" onClick={()=>go('H1')}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg></div>
         <span className="flex-1 text-center text-white text-[16px] font-bold">主会场开幕式</span>
