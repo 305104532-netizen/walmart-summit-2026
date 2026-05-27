@@ -69,66 +69,99 @@ const Btn=({children,gold,outline,onClick})=>(
 );
 const Empty=({text})=><div className="flex flex-col items-center py-16 text-wm-muted"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" opacity=".3"><rect x="3" y="4" width="18" height="18" rx="2"/></svg><p className="text-[14px] mt-3">{text}</p></div>;
 
-/* ═══ A1: IDENTITY SELECT (身份选择) ═══ */
+/* ═══ A1: REGISTER & VERIFY (报名 + 身份验证) ═══ */
 const PageA1=({go})=>{
   const [role, setRole] = useState(null);
+  const [checking, setChecking] = useState(false);
+  const [verified, setVerified] = useState(false);
+  const [selTopics, setSelTopics] = useState([0,1]);
   const roles = [
-    {id: 'seller', title: '卖家', desc: '沃尔玛平台卖家/商家', icon: '🏪', color: '#0071DC'},
-    {id: 'advertiser', title: '广告主', desc: '广告投放/品牌方', icon: '📢', color: '#8B5CF6'},
-    {id: 'employee', title: '员工', desc: '沃尔玛内部员工', icon: '👔', color: '#10B981'},
-    {id: 'service', title: '服务商', desc: '服务商/生态伙伴', icon: '🤝', color: '#F59E0B'},
+    {id: 'seller', title: '卖家', icon: '🏪', color: '#0071DC'},
+    {id: 'advertiser', title: '广告主', icon: '📢', color: '#8B5CF6'},
+    {id: 'employee', title: '员工', icon: '👔', color: '#10B981'},
+    {id: 'service', title: '服务商', icon: '🤝', color: '#F59E0B'},
   ];
+  const topics = ['全球战略','品牌增长','广告智能','生态合作','卖家成长','直播电商'];
+  const handleWhitelist = () => { setChecking(true); setTimeout(() => { setChecking(false); setVerified(true); }, 1500); };
+  const toggleTopic = (i) => setSelTopics(s => s.includes(i) ? s.filter(x=>x!==i) : [...s, i]);
+
   return(
-    <div className="h-screen flex flex-col overflow-auto bg-wm-bg">
-      <div className="shrink-0 relative" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)'}}>
+    <div className="h-full flex flex-col">
+      <div className="flex-1 overflow-auto">
+        {/* Hero Banner */}
+        <div className="shrink-0 relative" style={{background:'linear-gradient(170deg,#001D3D 0%,#003566 35%,#0071DC 80%,#3B8FE3 100%)'}}>
           <div className="absolute top-[-80px] right-[-50px] w-[260px] h-[260px] rounded-full" style={{background:'radial-gradient(circle,rgba(77,163,224,.25) 0%,transparent 55%)'}}></div>
           <div className="absolute bottom-[20px] left-[-40px] w-[160px] h-[160px] rounded-full" style={{background:'radial-gradient(circle,rgba(255,194,32,.1) 0%,transparent 55%)'}}></div>
           <div className="absolute top-8 right-6" style={{animation:'float 5s ease-in-out infinite',opacity:.06}}><Spark size={56} color="white"/></div>
-          <div className="relative z-10 px-5 pt-12 pb-8">
-            <div className="flex items-center pb-2"><Spark size={16}/><span className="ml-2 text-white/50 text-[11px] font-bold tracking-[.18em] uppercase">2026沃尔玛全球峰会</span><div className="flex-1"/></div>
-            <h1 className="text-white text-[30px] font-black leading-[1.05] tracking-tight mt-2">2026<br/>沃尔玛全球<br/>峰会</h1>
-            <div className="flex items-center gap-2.5 mt-4 mb-4">
+          <div className="relative z-10 px-5 pt-10 pb-4">
+            <div className="flex items-center pb-1"><Spark size={16}/><span className="ml-2 text-white/50 text-[11px] font-bold tracking-[.18em] uppercase">2026沃尔玛全球峰会</span><div className="flex-1"/></div>
+            <h1 className="text-white text-[26px] font-black leading-[1.05] tracking-tight mt-1">峰会报名</h1>
+            <div className="flex items-center gap-2.5 mt-3 mb-2">
               <span className="text-white/45 text-[13px]">9月16日 · 深圳</span>
               <div className="flex items-center gap-1.5 bg-[#FFC220]/15 rounded-full px-3 py-[3px] border border-[#FFC220]/20">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#FFC220]" style={{animation:'dotPulse 1.5s infinite'}}/>
                 <span className="text-[#FFC220] text-[11px] font-bold">报名中</span></div>
             </div>
-            <p className="text-white/40 text-[13px] pb-1">请选择您的身份进行验证</p>
           </div>
-          <div className="h-[28px] bg-wm-bg" style={{borderRadius:'22px 22px 0 0', marginTop: 0}}></div>
+          <div className="h-[24px] bg-wm-bg" style={{borderRadius:'22px 22px 0 0'}}></div>
         </div>
-        <div className="bg-wm-bg px-5 shrink-0" style={{paddingBottom: '0px'}}>
-          <div className="space-y-4 s3">
-            {roles.map((r, i) => (
-              <div 
-                key={r.id}
-                onClick={() => { 
-                  setRole(r.id); 
-                  const target = r.id === 'seller' ? 'A2' : (r.id === 'employee' ? 'A4' : 'A3');
-                  setTimeout(() => go(target), 200); 
-                }}
-                className={`bg-white rounded-[14px] p-5 cursor-pointer transition-all ${role === r.id ? 'ring-2 ring-wm-blue' : ''}`}
-                style={{boxShadow: '0 1px 3px rgba(0,0,0,.03)'}}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-[14px] flex items-center justify-center text-2xl" style={{background: r.color + '14'}}>
-                    {r.icon}
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-[16px] font-bold text-wm-title">{r.title}</p>
-                    <p className="text-[13px] text-wm-muted mt-0.5">{r.desc}</p>
-                  </div>
-                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${role === r.id ? 'border-wm-blue bg-wm-blue' : 'border-gray-200'}`}>
-                    {role === r.id && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>}
-                  </div>
-                </div>
+
+        {/* Content */}
+        <div className="bg-wm-bg px-4 pb-8">
+          {/* Step 1: Identity Selection */}
+          <p className="text-[15px] font-bold text-wm-title mb-3">选择身份</p>
+          <div className="grid grid-cols-4 gap-2 mb-5">
+            {roles.map(r => (
+              <div key={r.id} onClick={() => { setRole(r.id); setVerified(false); setChecking(false); }}
+                className={`flex flex-col items-center gap-1.5 py-3.5 rounded-[14px] cursor-pointer transition-all ${role === r.id ? 'ring-2 ring-wm-blue shadow-sm' : 'bg-white'}`}
+                style={{background: role === r.id ? r.color + '10' : 'white', boxShadow: role !== r.id ? '0 1px 3px rgba(0,0,0,.03)' : undefined}}>
+                <span className="text-[22px]">{r.icon}</span>
+                <span className={`text-[12px] font-semibold ${role === r.id ? 'text-wm-title' : 'text-wm-body'}`}>{r.title}</span>
               </div>
             ))}
           </div>
-          <p className="text-[12px] text-wm-muted text-center mt-2" style={{marginBottom:'20px'}}>
-            选择身份后需要进行验证，请准备好相关资质材料
-          </p>
+
+          {/* Step 2: Identity Verification */}
+          {role && (<Card className="p-5 mb-4">
+            <p className="text-[14px] font-bold text-wm-title mb-3">
+              {role === 'seller' ? '🏪 卖家验证' : role === 'advertiser' ? '📢 广告主验证' : role === 'employee' ? '👔 员工验证' : '🤝 服务商验证'}
+            </p>
+            {role === 'seller' && <><Inp label="Seller ID" ph="请输入您的 Seller ID"/><Inp label="店铺名称" ph="请输入店铺名称"/></>}
+            {(role === 'advertiser' || role === 'service') && <>
+              <div className="bg-wm-blue/5 rounded-[10px] p-3 mb-3">
+                <p className="text-[12px] text-wm-blue font-semibold">✓ 白名单准入通道 · 无需人工审核</p>
+              </div>
+              <Inp label="公司名称" ph="请输入公司全称"/>
+              <Inp label="企业邮箱" ph="请输入企业邮箱（用于验证）"/>
+              {!verified && <div className="mt-1"><Btn outline onClick={handleWhitelist}>{checking ? '验证中...' : '验证白名单'}</Btn></div>}
+              {verified && <div className="mt-2 bg-wm-ok/10 rounded-[10px] p-3 flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span className="text-[12px] text-wm-ok font-medium">白名单验证通过</span>
+              </div>}
+            </>}
+            {role === 'employee' && <><Inp label="工号" ph="请输入工号"/><Inp label="邀请码" ph="请输入 6 位邀请码"/></>}
+          </Card>)}
+
+          {/* Step 3: Registration Info */}
+          {role && (<Card className="p-5 mb-4">
+            <p className="text-[14px] font-bold text-wm-title mb-3">📋 报名信息</p>
+            <Inp label="姓名" ph="请输入真实姓名"/>
+            <Inp label="手机号" ph="请输入手机号"/>
+            <Inp label="邮箱" ph="请输入邮箱"/>
+            <Inp label="公司/店铺" ph="请输入所在公司"/>
+            <Inp label="职位" ph="请输入职位"/>
+            <div className="mb-3">
+              <label className="text-[13px] font-semibold text-wm-title block mb-2">感兴趣的议题</label>
+              <div className="flex flex-wrap gap-2">{topics.map((t,i)=>(
+                <span key={i} onClick={()=>toggleTopic(i)} className={`px-3 py-1.5 rounded-full text-[12px] font-medium cursor-pointer transition-all ${selTopics.includes(i)?'bg-wm-blue text-white':'bg-[#F9FAFB] text-wm-body border border-gray-200'}`}>{t}</span>
+              ))}</div>
+            </div>
+            <div className="mt-3"><Btn onClick={()=>go('A6')}>提交报名</Btn></div>
+          </Card>)}
+
+          {!role && <p className="text-[12px] text-wm-muted text-center mt-2">选择身份后即可填写报名信息</p>}
         </div>
+      </div>
     </div>
   );
 };
